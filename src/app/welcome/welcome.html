@@ -1,0 +1,25 @@
+<header></header>
+<main>
+
+  <div 
+    class="content" 
+    *ngFor="let product of products"
+  >
+    <img [src]="product.image" [alt]="product.title">
+
+    <div class="device-description">
+      <span class="title">{{ product.title }}</span>
+      <span class="details">{{ product.description }}</span>
+    </div>
+
+    <button class="info" (click)="openInfo(product)">Info</button>
+    <button class="contact">Kontakt</button>
+  </div>
+
+</main>
+
+<footer></footer>
+
+
+  <!-- <img  src="./img/LE 355B.png" alt=""> -->
+    <!-- <b> Heidenhain LE 355B: </b>gestestete Bahnsteuerung, Netzteil ist überholt. -->

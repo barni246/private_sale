@@ -1,0 +1,97 @@
+/* CSS für deine Seite */
+
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: darkblue;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-bottom: 2px solid white;
+}
+
+footer {
+    width: 100%;
+    height: 80px;
+    background-color: darkblue;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid white;
+}
+
+::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+main {
+    padding: 104px 24px 24px 24px;
+    min-height: 100vh;
+    background-color: cadetblue;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    box-sizing: border-box;
+
+    .content {
+        width: 45%;
+        min-width: 400px;
+        height: 450px;
+        background-color: gray;
+        border: 2px solid darkblue;
+        box-sizing: border-box;
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .device-description {
+            padding: 8px;
+            height: 50px;
+            text-align: start;
+            color: black;
+        }
+
+        .info {
+
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            color: chartreuse;
+            background-color: darkblue;
+            font-weight: bold;
+            padding: 3px;
+            cursor: pointer;
+        }
+
+        .contact {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            color: chocolate;
+            background-color: darkblue;
+             font-weight: bold;
+            padding: 3px;
+            cursor: pointer;
+        }
+    }
+}
+
+@media (max-width:900px) {
+    .content {
+        width: 100% !important;
+    }
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { MatDialogModule } from '@angular/material/dialog';
@@ -57,6 +57,8 @@ export class WelcomeComponent {
   storageKey = 'contact_rate_limit';
 
   rateLimitError = '';
+
+   @ViewChild('contactForm') contactForm!: ElementRef<HTMLElement>;
 
   form!: FormGroup; // wird in ngOnInit erstellt
 
@@ -183,6 +185,15 @@ export class WelcomeComponent {
 
     localStorage.setItem(this.storageKey, JSON.stringify(timestamps));
   }
+
+
+  scrollToForm() {
+  const yOffset = -100; // 100px vor dem Element
+  const element = this.contactForm.nativeElement;
+  const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
 
 
 

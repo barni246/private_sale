@@ -13,7 +13,8 @@
     </div>
 
     <button class="info" (click)="openInfo(product)">Info</button>
-    <button class="contact">Kontakt</button>
+    <button class="contact" (click)="scrollToForm()">Kontakt</button>
+
   </div>
 
 </main>
@@ -21,7 +22,7 @@
 <div style="width: 100%; background-color: cadetblue; height: 100%;">
 
 
-<form [formGroup]="form" (ngSubmit)="sendMessage()" class="contact-form" >
+<form #contactForm [formGroup]="form" (ngSubmit)="sendMessage()" class="contact-form" >
 
   <!-- NAME -->
   <mat-form-field appearance="outline" class="full-width">

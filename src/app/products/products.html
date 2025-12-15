@@ -1,50 +1,39 @@
-<div class="wrapper">
-
-
-<header title="Heidenhain Steuerung LE 355">
-  <button routerLink="/products">Products</button>
-  <h1 style="color: chartreuse; text-align: center;">Lagerauflösung</h1>
+<header>
+    <button style="position: fixed; right: 8px;" type="button" routerLink="/">Welcome</button>
+    <h1>Lagerauflösung</h1>
 </header>
+
+
 <main>
 
+    @for (product of products; track $index) {
+    <div class="product-wrapper" [class.fullscreen]="isFullscreenIndex === $index">
+        <button class="nav left" (click)="prev(product)">❮</button>
 
-  <div class="content" *ngFor="let product of products; let i = index" [class.fullscreen]="fullscreenIndex === i">
-    <div class="image-wrapper">
-      <button class="nav left" (click)="prevImage(i, product.images.length)">
-        ❮
-      </button>
+        <img [src]="product.images[product.currentIndex]" [alt]="product.title" />
 
-      <img [src]="product.images[currentImageIndex[i]]" [alt]="product.title" />
+        <button class="nav right" (click)="next(product)">❯</button>
 
-      <button class="nav right" (click)="nextImage(i, product.images.length)">
-        ❯
-      </button>
+        <div class="counter">
+            {{ product.currentIndex + 1 }} / {{ product.images.length }}
+        </div>
 
-      <div class="counter">
-        {{ currentImageIndex[i] + 1 }} of {{ product.images.length }}
-      </div>
+        <button class="fullscreen-btn" (click)="toggleFullscreen($index)">
+            {{ isFullscreenIndex === $index ? 'Exit' : 'Fullscreen' }}
+        </button>
 
-      <button class="fullscreen-btn" (click)="toggleFullscreen(i)">
-        {{ fullscreenIndex === i ? '⤢ Exit' : '⤢ Fullscreen' }}
-      </button>
+        @if (isFullscreenIndex != $index) {
+             <button  class="contact" (click)="scrollToForm()">Kontakt</button>
+        }
+
+        
+
+
+        <div class="title">{{ product.title }}</div>
     </div>
+    }
 
-    <div class="device-description">
-      <span class="title">{{ product.title }}</span>
-      <span class="details">{{ product.description }}</span>
-    </div>
-
-    <button class="info" (click)="openInfo(product)">Info</button>
-    <button class="contact" (click)="scrollToForm()">Kontakt</button>
-  </div>
-
-
-
-
-
-</main>
-
-<div style="width: 100%;  background-color: #20325d; height: 100%;">
+<div style="width: 100%; margin-top: 150px; margin-bottom: 80px;  height: 100%;">
 
 
   <form #contactForm [formGroup]="form" (ngSubmit)="sendMessage()" class="contact-form">
@@ -111,9 +100,27 @@
 
 </div>
 
-<footer></footer>
 
-</div>
+</main>
 
-<!-- <img  src="./img/LE 355B.png" alt=""> -->
-<!-- <b> Heidenhain LE 355B: </b>gestestete Bahnsteuerung, Netzteil ist überholt. -->
+
+
+
+<!-- <div class="product-wrapper" *ngFor="let product of products; let i = index"
+    [class.fullscreen]="isFullscreenIndex === i">
+    <button class="nav left" (click)="prev(product)">❮</button>
+
+    <img [src]="product.images[product.currentIndex]" [alt]="product.title" />
+
+    <button class="nav right" (click)="next(product)">❯</button>
+
+    <div class="counter">
+        {{ product.currentIndex + 1 }} / {{ product.images.length }}
+    </div>
+
+    <button class="fullscreen-btn" (click)="toggleFullscreen(i)">
+        {{ isFullscreenIndex === i ? 'Exit' : 'Fullscreen' }}
+    </button>
+
+    <div class="title">{{ product.title }}</div>
+</div> -->

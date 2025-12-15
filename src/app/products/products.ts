@@ -1,56 +1,44 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-
-import { MatDialogModule } from '@angular/material/dialog';
-import { FormGroup, FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { InfoDialog } from '../info-dialog/info-dialog';
-
-import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from "@angular/router";
 
 
-
-
-
-export interface Product {
+interface Product {
   title: string;
-  description: string;
   images: string[];
+  currentIndex: number;
 }
 
-
 @Component({
-  selector: 'app-welcome',
+  selector: 'app-products',
   standalone: true,
-  imports: [
+  imports: [RouterLink,
     FormsModule,
-    MatDialogModule,
     CommonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    RouterLink
-],
-  templateUrl: './welcome.html',
-  styleUrl: './welcome.scss',
+  ],
+  templateUrl: './products.html',
+  styleUrl: './products.scss',
 })
 
-export class WelcomeComponent {
 
 
+export class Products {
 
 
-
+ // currentIndex = 0;
+ // isFullscreen = false;
+  isFullscreenIndex: number | null = null;
   API_URL = 'https://contact.back-serv-api.com/contact/send/';
 
   // Frontend-Rate-Limits
@@ -58,17 +46,43 @@ export class WelcomeComponent {
   maxMessages = 3;                       // Max. Anzahl innerhalb des Zeitfensters
   storageKey = 'contact_rate_limit';
   currentImageIndex: number[] = [];
-fullscreenIndex: number | null = null;
+ // fullscreenIndex: number | null = null;
 
   rateLimitError = '';
 
-   @ViewChild('contactForm') contactForm!: ElementRef<HTMLElement>;
+  @ViewChild('contactForm') contactForm!: ElementRef<HTMLElement>;
 
   form!: FormGroup; // wird in ngOnInit erstellt
 
 
-  constructor(private dialog: MatDialog, private fb: FormBuilder, private http: HttpClient) { }
+  products: Product[] = [
+    {
+      title: 'LE 355B: General überholt, getestet',
+      images: [
+        '/img/ts649.png',
+        '/img/LE355B.png'
+      ],
+      currentIndex: 0
+    },
+    {
+      title: 'Produkt B',
+      images: [
+        '/img/ts649.png',
+        '/img/LE355B.png'
+      ],
+      currentIndex: 0
+    },
+    {
+      title: 'Produkt C',
+      images: [
+        '/img/ts649.png',
+        '/img/LE355B.png'
+      ],
+      currentIndex: 0
+    }
+  ];
 
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
 
 
   ngOnInit() {
@@ -94,69 +108,22 @@ fullscreenIndex: number | null = null;
   get message() { return this.form.get('message'); }
 
 
-  nextImage(productIndex: number, imagesLength: number) {
-  this.currentImageIndex[productIndex] =
-    (this.currentImageIndex[productIndex] + 1) % imagesLength;
-}
-
-prevImage(productIndex: number, imagesLength: number) {
-  this.currentImageIndex[productIndex] =
-    (this.currentImageIndex[productIndex] - 1 + imagesLength) % imagesLength;
-}
-
-toggleFullscreen(index: number) {
-  this.fullscreenIndex = this.fullscreenIndex === index ? null : index;
-}
 
 
+  toggleFullscreen(index: number) {
+    this.isFullscreenIndex =
+      this.isFullscreenIndex === index ? null : index;
+  }
 
-  products: Product[] = [
-    {
-      title: 'Heidenhain LE 355B',
-      description: 'Getestete Steuerung, Netzteil ist überholt.',
-      images: [
-        './img/LE355B.png',
-        './img/ts649.png',
-      ]
-    },
-    {
-      title: 'Heidenhain LE 355Q',
-      description: 'Getestete Steuerung, Netzteil ist überholt.',
-      images: [
-         './img/LE355B.png'
-      ]
-    },
-    {
-      title: 'Heidenhain LE 415',
-      description: 'Getestete Steuerung, Netzteil ist überholt.',
-      images: [
-        './img/LE355B.png'
-      ]
-    },
-    {
-      title: 'Heidenhain LE 426PB',
-      description: 'Getestete Steuerung, Netzteil ist überholt.',
-      images: ['./img/LE355B.png'
-      ]
-    },
-    {
-      title: 'Heidenhain ROD 700',
-      description: 'Getesteter Drehgeber, er ist überholt.',
-      images: ['./img/LE355B.png']
-    },
-    {
-      title: 'Heidenhain ROD 880',
-      description: 'Getesteter Drehgeber, er ist überholt.',
-      images: ['./img/LE355B.png']
-    }
-  ];
+  next(product: Product) {
+    product.currentIndex =
+      (product.currentIndex + 1) % product.images.length;
+  }
 
-  openInfo(product: Product) {
-    this.dialog.open(InfoDialog, {
-      data: product,
-      width: '450px',
-      height: '100vh'
-    });
+  prev(product: Product) {
+    product.currentIndex =
+      (product.currentIndex - 1 + product.images.length)
+      % product.images.length;
   }
 
 
@@ -177,12 +144,12 @@ toggleFullscreen(index: number) {
     this.http.post(this.API_URL, this.form.value).subscribe({
       next: () => {
         this.saveTimestamp();
-      //  alert('Nachricht erfolgreich gesendet!');
+        //  alert('Nachricht erfolgreich gesendet!');
         this.form.reset();
       },
       error: (err) => {
         console.error(err);
-       // alert('Es ist ein Fehler aufgetreten.');
+        // alert('Es ist ein Fehler aufgetreten.');
       }
     });
   }
@@ -215,14 +182,16 @@ toggleFullscreen(index: number) {
   }
 
 
+
+
+
   scrollToForm() {
-  const yOffset = -100; // 100px vor dem Element
-  const element = this.contactForm.nativeElement;
-  const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    const yOffset = -100; // 100px vor dem Element
+    const element = this.contactForm.nativeElement;
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
-  window.scrollTo({ top: y, behavior: 'smooth' });
-}
-
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
 
 
 }

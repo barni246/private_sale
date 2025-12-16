@@ -3,7 +3,7 @@
     <h1>Lagerauflösung</h1>
 </header>
 
-
+<p>Die Heidenhain geräte sind alle überholt und getestet. Was du hier siehst, sind alle, letzte Artikel</p>
 <main>
 
     @for (product of products; track $index) {
@@ -23,7 +23,7 @@
         </button>
 
         @if (isFullscreenIndex != $index) {
-             <button  class="contact" (click)="scrollToForm()">Kontakt</button>
+             <button  class="contact" (click)="scrollToForm($index)">Kontakt</button>
         }
 
         
@@ -36,7 +36,17 @@
 <div style="width: 100%; margin-top: 150px; margin-bottom: 80px;  height: 100%;">
 
 
-  <form #contactForm [formGroup]="form" (ngSubmit)="sendMessage()" class="contact-form">
+  <!-- <form #contactForm [formGroup]="form" (ngSubmit)="sendMessage()"  [class.disabled]="isLoading" class="contact-form"> -->
+
+<form
+  #formDirective="ngForm"
+  #contactForm
+  [formGroup]="form"
+  (ngSubmit)="sendMessage(formDirective)"
+  class="contact-form"
+  [class.disabled]="isLoading"
+>
+
 
     <!-- NAME -->
     <mat-form-field appearance="outline" class="full-width">
@@ -89,9 +99,29 @@
     <div class="rate-error">{{ rateLimitError }}</div>
     }
 
-    <button mat-raised-button color="primary" [disabled]="form.invalid">
+    <!-- Ladebalken -->
+@if (isLoading) {
+  <mat-progress-bar
+    mode="indeterminate"
+    color="primary"
+    style="margin-bottom: 12px;"
+  ></mat-progress-bar>
+}
+
+
+    <!-- <button mat-raised-button color="primary" [disabled]="form.invalid">
       Senden
-    </button>
+    </button> -->
+
+    <button
+  mat-raised-button
+  color="primary"
+  type="submit"
+  [disabled]="form.invalid || isLoading"
+>
+  {{ isLoading ? 'Wird gesendet...' : 'Senden' }}
+</button>
+
 
   </form>
 
@@ -103,7 +133,11 @@
 
 </main>
 
-
+<footer>
+   <span> impressum</span>
+    <span>datenschutz</span>
+    <span>copyright</span>
+</footer>
 
 
 <!-- <div class="product-wrapper" *ngFor="let product of products; let i = index"

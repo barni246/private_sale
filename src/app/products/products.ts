@@ -7,6 +7,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { finalize } from 'rxjs/operators';
+import { FormGroupDirective } from '@angular/forms';
+
 
 
 interface Product {
@@ -26,6 +30,8 @@ interface Product {
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatProgressBar,
+
   ],
   templateUrl: './products.html',
   styleUrl: './products.scss',
@@ -35,26 +41,21 @@ interface Product {
 
 export class Products {
 
-
- // currentIndex = 0;
- // isFullscreen = false;
   isFullscreenIndex: number | null = null;
   API_URL = 'https://contact.back-serv-api.com/contact/send/';
 
-  // Frontend-Rate-Limits
-  limitMinutes = 5;                      // Zeitfenster
-  maxMessages = 3;                       // Max. Anzahl innerhalb des Zeitfensters
+  limitMinutes = 5;
+  maxMessages = 3;
   storageKey = 'contact_rate_limit';
   currentImageIndex: number[] = [];
- // fullscreenIndex: number | null = null;
 
   rateLimitError = '';
 
   @ViewChild('contactForm') contactForm!: ElementRef<HTMLElement>;
 
-  form!: FormGroup; // wird in ngOnInit erstellt
+  form!: FormGroup;
 
-
+  isLoading = false;
   products: Product[] = [
     {
       title: 'LE 355B: General überholt, getestet',
@@ -127,7 +128,7 @@ export class Products {
   }
 
 
-  sendMessage() {
+  sendMessage(formDirective: FormGroupDirective) {
     this.rateLimitError = '';
 
     if (this.form.invalid) {
@@ -141,18 +142,28 @@ export class Products {
       return;
     }
 
-    this.http.post(this.API_URL, this.form.value).subscribe({
-      next: () => {
-        this.saveTimestamp();
-        //  alert('Nachricht erfolgreich gesendet!');
-        this.form.reset();
-      },
-      error: (err) => {
-        console.error(err);
-        // alert('Es ist ein Fehler aufgetreten.');
-      }
-    });
+    this.isLoading = true;
+
+    this.http.post(this.API_URL, this.form.value)
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.saveTimestamp();
+
+          // 🔥 DAS ist der entscheidende Teil
+          formDirective.resetForm(); // ← entfernt rote Rahmen komplett
+        },
+        error: (err) => {
+          console.error(err);
+        }
+      });
   }
+
+
 
   // --- RATE LIMIT FRONTEND ---
   checkRateLimit(): boolean {
@@ -182,14 +193,26 @@ export class Products {
   }
 
 
+  scrollToForm(index: number) {
+    const title = this.products[index].title;
 
+    this.form.patchValue({
+      message: `Betreff: ${title}\n\n`
+    });
+    setTimeout(() => {
+      const textarea = document.querySelector(
+        'textarea[formControlName="message"]'
+      ) as HTMLTextAreaElement;
 
-
-  scrollToForm() {
+      textarea?.focus();
+      textarea?.setSelectionRange(
+        textarea.value.length,
+        textarea.value.length
+      );
+    }, 300);
     const yOffset = -100; // 100px vor dem Element
     const element = this.contactForm.nativeElement;
     const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
     window.scrollTo({ top: y, behavior: 'smooth' });
   }
 

@@ -11,6 +11,7 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 import { finalize } from 'rxjs/operators';
 import { FormGroupDirective } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -32,7 +33,8 @@ interface Product {
     MatButtonModule,
     MatIconModule,
     MatProgressBar,
-    MatChipsModule 
+    MatChipsModule,
+     MatTooltipModule
 
   ],
   templateUrl: './products.html',
@@ -54,6 +56,9 @@ export class Products {
   rateLimitError = '';
 
   @ViewChild('contactForm') contactForm!: ElementRef<HTMLElement>;
+
+  currentYear = new Date().getFullYear();
+
 
   form!: FormGroup;
 

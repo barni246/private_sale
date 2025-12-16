@@ -9,7 +9,8 @@
     @for (product of products; track $index) {
     <div class="product-wrapper" [class.fullscreen]="isFullscreenIndex === $index">
         <!-- <button class="nav left" (click)="prev(product)">❮</button> -->
-        <button mat-icon-button class="nav left" (click)="prev(product)" aria-label="Vorheriges Produkt">
+        <button mat-icon-button matTooltip="zurück" class="nav left" (click)="prev(product)"
+            aria-label="Vorheriges Produkt">
             <mat-icon>chevron_left</mat-icon>
         </button>
 
@@ -18,7 +19,8 @@
 
         <!-- <button class="nav right" (click)="next(product)">❯</button> -->
 
-        <button mat-icon-button class="nav right" (click)="prev(product)" aria-label="Vorheriges Produkt">
+        <button matTooltip="nächste" mat-icon-button class="nav right" (click)="prev(product)"
+            aria-label="Vorheriges Produkt">
             <mat-icon>chevron_right</mat-icon>
         </button>
 
@@ -27,12 +29,27 @@
             {{ product.currentIndex + 1 }} / {{ product.images.length }}
         </div>
 
-        <button mat-icon-button class="fullscreen-btn" (click)="toggleFullscreen($index)"
-            [attr.aria-label]="isFullscreenIndex === $index ? 'Exit fullscreen' : 'Enter fullscreen'">
+        <button mat-icon-button class="fullscreen-btn" (click)="toggleFullscreen($index)" [matTooltip]="
+    isFullscreenIndex === $index
+      ? 'Vollbild verlassen'
+      : 'Vollbild anzeigen'
+  " [attr.aria-label]="
+    isFullscreenIndex === $index
+      ? 'Vollbild verlassen'
+      : 'Vollbild anzeigen'
+  ">
             <mat-icon>
                 {{ isFullscreenIndex === $index ? 'fullscreen_exit' : 'fullscreen' }}
             </mat-icon>
         </button>
+
+
+        <!-- <button  matTooltip="Vollbild" mat-icon-button class="fullscreen-btn" (click)="toggleFullscreen($index)"
+            [attr.aria-label]="isFullscreenIndex === $index ? 'Exit fullscreen' : 'Enter fullscreen'">
+            <mat-icon>
+                {{ isFullscreenIndex === $index ? 'fullscreen_exit' : 'fullscreen' }}
+            </mat-icon>
+        </button> -->
 
 
         <!-- @if (isFullscreenIndex != $index) {
@@ -40,16 +57,11 @@
         } -->
 
         @if (isFullscreenIndex !== $index) {
-  <button
-    mat-icon-button
-    class="contact"
-    (click)="scrollToForm($index)"
-    aria-label="Kontakt aufnehmen"
-    matTooltip="Kontakt"
-  >
-    <mat-icon>mail</mat-icon>
-  </button>
-}
+        <button mat-icon-button class="contact" (click)="scrollToForm($index)" aria-label="Kontakt aufnehmen"
+            matTooltip="Kontakt">
+            <mat-icon>mail</mat-icon>
+        </button>
+        }
 
 
 
@@ -144,11 +156,30 @@
 
 </main>
 
-<footer>
+
+<footer class="app-footer">
+    <!-- Impressum -->
+    <a mat-icon-button routerLink="/impressum" matTooltip="Impressum" aria-label="Impressum">
+        <mat-icon>description</mat-icon>
+    </a>
+
+    <!-- Datenschutz -->
+    <a mat-icon-button routerLink="/datenschutz" matTooltip="Datenschutz" aria-label="Datenschutz">
+        <mat-icon>policy</mat-icon>
+    </a>
+
+    <!-- Copyright -->
+    <span class="copyright">
+        © {{ currentYear }} Barnabas Gonda
+    </span>
+</footer>
+
+
+<!-- <footer>
     <span> impressum</span>
     <span>datenschutz</span>
     <span>copyright</span>
-</footer>
+</footer> -->
 
 
 <!-- <div class="product-wrapper" *ngFor="let product of products; let i = index"

@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { finalize } from 'rxjs/operators';
 import { FormGroupDirective } from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 
@@ -31,6 +32,7 @@ interface Product {
     MatButtonModule,
     MatIconModule,
     MatProgressBar,
+    MatChipsModule 
 
   ],
   templateUrl: './products.html',

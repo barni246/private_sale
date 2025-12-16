@@ -8,133 +8,144 @@
 
     @for (product of products; track $index) {
     <div class="product-wrapper" [class.fullscreen]="isFullscreenIndex === $index">
-        <button class="nav left" (click)="prev(product)">❮</button>
+        <!-- <button class="nav left" (click)="prev(product)">❮</button> -->
+        <button mat-icon-button class="nav left" (click)="prev(product)" aria-label="Vorheriges Produkt">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+
 
         <img [src]="product.images[product.currentIndex]" [alt]="product.title" />
 
-        <button class="nav right" (click)="next(product)">❯</button>
+        <!-- <button class="nav right" (click)="next(product)">❯</button> -->
+
+        <button mat-icon-button class="nav right" (click)="prev(product)" aria-label="Vorheriges Produkt">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+
 
         <div class="counter">
             {{ product.currentIndex + 1 }} / {{ product.images.length }}
         </div>
 
-        <button class="fullscreen-btn" (click)="toggleFullscreen($index)">
-            {{ isFullscreenIndex === $index ? 'Exit' : 'Fullscreen' }}
+        <button mat-icon-button class="fullscreen-btn" (click)="toggleFullscreen($index)"
+            [attr.aria-label]="isFullscreenIndex === $index ? 'Exit fullscreen' : 'Enter fullscreen'">
+            <mat-icon>
+                {{ isFullscreenIndex === $index ? 'fullscreen_exit' : 'fullscreen' }}
+            </mat-icon>
         </button>
 
-        @if (isFullscreenIndex != $index) {
-             <button  class="contact" (click)="scrollToForm($index)">Kontakt</button>
-        }
 
-        
+        <!-- @if (isFullscreenIndex != $index) {
+        <button class="contact" (click)="scrollToForm($index)">Kontakt</button>
+        } -->
+
+        @if (isFullscreenIndex !== $index) {
+  <button
+    mat-icon-button
+    class="contact"
+    (click)="scrollToForm($index)"
+    aria-label="Kontakt aufnehmen"
+    matTooltip="Kontakt"
+  >
+    <mat-icon>mail</mat-icon>
+  </button>
+}
+
+
+
 
 
         <div class="title">{{ product.title }}</div>
     </div>
     }
 
-<div style="width: 100%; margin-top: 150px; margin-bottom: 80px;  height: 100%;">
+    <div style="width: 100%; margin-top: 150px; margin-bottom: 80px;  height: 100%;">
 
 
-  <!-- <form #contactForm [formGroup]="form" (ngSubmit)="sendMessage()"  [class.disabled]="isLoading" class="contact-form"> -->
+        <!-- <form #contactForm [formGroup]="form" (ngSubmit)="sendMessage()"  [class.disabled]="isLoading" class="contact-form"> -->
 
-<form
-  #formDirective="ngForm"
-  #contactForm
-  [formGroup]="form"
-  (ngSubmit)="sendMessage(formDirective)"
-  class="contact-form"
-  [class.disabled]="isLoading"
->
+        <form #formDirective="ngForm" #contactForm [formGroup]="form" (ngSubmit)="sendMessage(formDirective)"
+            class="contact-form" [class.disabled]="isLoading">
 
 
-    <!-- NAME -->
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Name</mat-label>
-      <input matInput type="text" formControlName="name">
+            <!-- NAME -->
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" formControlName="name">
 
-      @if (name?.touched && name?.invalid) {
-      <mat-error>Name ist erforderlich (min. 2 Zeichen).</mat-error>
-      }
-    </mat-form-field>
+                @if (name?.touched && name?.invalid) {
+                <mat-error>Name ist erforderlich (min. 2 Zeichen).</mat-error>
+                }
+            </mat-form-field>
 
-    <!-- EMAIL -->
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Email</mat-label>
-      <input matInput type="email" formControlName="email" style="position: relative;">
-      <div style="position: absolute; bottom: -24px; left: 0; font-size: 11px; display: flex;">
+            <!-- EMAIL -->
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" style="position: relative;">
+                <div style="position: absolute; bottom: -24px; left: 0; font-size: 11px; display: flex;">
 
 
 
 
-        @if (email?.touched && email?.errors) {
-        @if (email?.errors?.['required']) {
-        <mat-error>Email ist erforderlich.</mat-error>
-        }
+                    @if (email?.touched && email?.errors) {
+                    @if (email?.errors?.['required']) {
+                    <mat-error>Email ist erforderlich.</mat-error>
+                    }
 
-        @if (email?.errors?.['email']) {
-        <mat-error>Keine gültige E-Mail-Adresse.</mat-error>
-        }
+                    @if (email?.errors?.['email']) {
+                    <mat-error>Keine gültige E-Mail-Adresse.</mat-error>
+                    }
 
-        @if (email?.errors?.['pattern']) {
-        <mat-error>Bitte ein korrektes E-Mail-Format verwenden.</mat-error>
-        }
-        }
-      </div>
+                    @if (email?.errors?.['pattern']) {
+                    <mat-error>Bitte ein korrektes E-Mail-Format verwenden.</mat-error>
+                    }
+                    }
+                </div>
 
-    </mat-form-field>
+            </mat-form-field>
 
-    <!-- MESSAGE -->
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Nachricht</mat-label>
-      <textarea matInput rows="5" formControlName="message"></textarea>
+            <!-- MESSAGE -->
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Nachricht</mat-label>
+                <textarea matInput rows="5" formControlName="message"></textarea>
 
-      @if (message?.touched && message?.invalid) {
-      <mat-error>Nachricht ist erforderlich (min. 10 Zeichen).</mat-error>
-      }
-    </mat-form-field>
+                @if (message?.touched && message?.invalid) {
+                <mat-error>Nachricht ist erforderlich (min. 10 Zeichen).</mat-error>
+                }
+            </mat-form-field>
 
-    <!-- RATE LIMIT -->
-    @if (rateLimitError) {
-    <div class="rate-error">{{ rateLimitError }}</div>
-    }
+            <!-- RATE LIMIT -->
+            @if (rateLimitError) {
+            <div class="rate-error">{{ rateLimitError }}</div>
+            }
 
-    <!-- Ladebalken -->
-@if (isLoading) {
-  <mat-progress-bar
-    mode="indeterminate"
-    color="primary"
-    style="margin-bottom: 12px;"
-  ></mat-progress-bar>
-}
+            <!-- Ladebalken -->
+            @if (isLoading) {
+            <mat-progress-bar mode="indeterminate" color="primary" style="margin-bottom: 12px;"></mat-progress-bar>
+            }
 
 
-    <!-- <button mat-raised-button color="primary" [disabled]="form.invalid">
+            <!-- <button mat-raised-button color="primary" [disabled]="form.invalid">
       Senden
     </button> -->
 
-    <button
-  mat-raised-button
-  color="primary"
-  type="submit"
-  [disabled]="form.invalid || isLoading"
->
-  {{ isLoading ? 'Wird gesendet...' : 'Senden' }}
-</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || isLoading">
+                {{ isLoading ? 'Wird gesendet...' : 'Senden' }}
+            </button>
 
 
-  </form>
+        </form>
 
 
 
 
-</div>
+    </div>
 
 
 </main>
 
 <footer>
-   <span> impressum</span>
+    <span> impressum</span>
     <span>datenschutz</span>
     <span>copyright</span>
 </footer>

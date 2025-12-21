@@ -10,60 +10,122 @@ header {
     right: 0;
     left: 0;
     z-index: 1000;
+     box-shadow: 0 4px 8px rgba(0, 92, 187, 0.35);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 
     h1 {
         letter-spacing: 3px;
+        font-size: 35px !important;
     }
 }
 
- p {
-        padding-top: 120px;
-        background-color: rgba(0, 0, 0, 0.2);
-            display: block;
-   // margin-block-start: 1em;
-    margin-block-end: 0;
-   //// margin-inline-start: 0px;
-   // margin-inline-end: 0px;
-   // unicode-bidi: isolate;
-   text-align: center;
-   font-size: larger;
+// .text-content {
+//     padding: 120px 48px 0px 48px;
+//     background-color: rgba(0, 0, 0, 0.2);
+//     font-size: 22px;
+//     font-weight: 500;
+//     color: #005cbb;
+//     line-height: 1.6;
+//     position: relative;
+//     border: 1px red solid;
+//     display: inline;
 
+//     .contact-btn {
+//         display: inline-flex;
+//         vertical-align: middle;
+//         margin-left: 6px;
+//     }
+
+// }
+
+
+
+.text-content {
+    padding: 140px 48px 0 48px;
+    background-color: rgba(0, 0, 0, 0.2);
+    font-size: 22px;
+    font-weight: 500;
+    color: #005cbb;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Text inline halten */
+.text-content span {
+    display: inline;
+}
+
+/* Button direkt nach dem Text */
+.text-content .contact-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 6px;
+    padding: 0;
+     border: #005cbb 2px solid;
+    border-radius: 100%;
+    background-color: #005cbb;
+    color: chartreuse;
+    cursor: pointer;
+    animation: pulseScale 1.6s ease-in-out infinite;
+    transition: background-color 225ms ease-in-out, color 225ms ease-in-out;
+
+    &:hover {
+        background-color: chartreuse;
+        color: #005cbb;
+        transition: all 225ms ease-in-out;
     }
 
+}
+
+
 main {
-    padding-top: 130px;
+    padding: 90px 24px 0px 24px;
     display: flex;
     width: 100vw;
-    //  height:calc(100vh - 100px) ;
     max-width: 100%;
     flex-wrap: wrap;
     justify-content: center;
     gap: 64px;
     background-color: rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
 
-   
+
 }
 
 /* =========================
    NORMAL
    ========================= */
 .product-wrapper {
-    width: 330px;
-    height: 330px;
+    width: 480px;
+    height: 480px;
     position: relative;
     background: #111;
     background-color: rgba(0, 0, 0, 0.4);
+     background-color: rgba(0, 0, 0, 0.3);
+     background-color: rgb(83, 112, 147);
+      background-color: rgb(103, 130, 164);
     border-radius: 2px;
     box-sizing: border-box;
     padding: 5px;
-    border: 2px solid #005cbb;
+   // border: 2px solid #005cbb;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 
 }
 
-.product-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
+.product-wrapper {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 73%;
+        height: 73%;
+        object-fit: fill;
+    }
 
 }
 
@@ -86,7 +148,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-   
+
     &:hover {
         transition: all 225ms ease-in-out;
         color: #005cbb;
@@ -94,13 +156,11 @@ main {
     }
 }
 
-.mat-icon {
-   
-}
+.mat-icon {}
 
 .nav.left {
     left: 10px;
-    
+
 
 }
 
@@ -113,9 +173,8 @@ main {
     bottom: 10px;
     left: 10px;
     background: #005cbb;
-    color: white;
     color: chartreuse;
-    padding: 10px ;
+    padding: 10px;
     font-size: 12px;
     z-index: 2;
     border-radius: 100%;
@@ -137,8 +196,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-     animation: pulseScale 1.6s ease-in-out infinite;
-  transition: background-color 225ms ease-in-out, color 225ms ease-in-out;
+    animation: pulseScale 1.6s ease-in-out infinite;
+    transition: background-color 225ms ease-in-out, color 225ms ease-in-out;
 
     &:hover {
         background-color: chartreuse;
@@ -148,15 +207,20 @@ main {
 }
 
 @keyframes pulseScale {
-  0% {
-    transform: scale(1);opacity: 0.9;
-  }
-  50% {
-    transform: scale(1.1);opacity: 1;
-  }
-  100% {
-    transform: scale(1);opacity: 0.9;
-  }
+    0% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
 }
 
 
@@ -175,7 +239,8 @@ main {
     border: none;
     cursor: pointer;
     z-index: 2;
-     transition: all 225ms ease-in-out;
+    transition: all 225ms ease-in-out;
+
     &:hover {
         transition: all 225ms ease-in-out;
         scale: 1.2;
@@ -211,13 +276,11 @@ main {
 
 .contact-form {
     max-width: 450px;
-    // background-color: rgb(186, 186, 186);
     margin: 0 auto;
     padding: 25px;
     display: flex;
     flex-direction: column;
     gap: 22px;
-    border: 1px rgba(0, 0, 0, 0.4) solid;
     border: 2px solid #005cbb;
     border-radius: 3px;
 
@@ -289,27 +352,27 @@ footer {
 }
 
 .app-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  padding: 12px 16px;
- // background-color: #0a0a0a;
-  color: #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 12px 16px;
+    // background-color: #0a0a0a;
+    color: #aaa;
 }
 
 .app-footer mat-icon {
-  color: #aaa;
-  transition: color 200ms ease-in-out, transform 200ms ease-in-out;
+    color: #aaa;
+    transition: color 200ms ease-in-out, transform 200ms ease-in-out;
 }
 
 .app-footer a:hover mat-icon {
-  color: #4caf50;
-  transform: scale(1.15);
+    color: #4caf50;
+    transform: scale(1.15);
 }
 
 .copyright {
-  font-size: 12px;
-  margin-left: 12px;
-  opacity: 0.8;
+    font-size: 12px;
+    margin-left: 12px;
+    opacity: 0.8;
 }

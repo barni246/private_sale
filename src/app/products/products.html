@@ -1,14 +1,50 @@
 <header>
-    <button style="position: fixed; right: 8px;" type="button" routerLink="/">Welcome</button>
+    <button title="Heidenhain Steuerung LE 355 Drehgeber ROD 700" style="position: fixed; right: 8px;" type="button"
+        routerLink="/">Welcome</button>
     <h1>Lagerauflösung</h1>
 </header>
 
-<p>Die Heidenhain geräte sind alle überholt und getestet. Was du hier siehst, sind alle, letzte Artikel</p>
+<!-- <div class="text-content">
+    <span>Privater Verkauf aus Lagerauflösung / Kellerfund.
+    Alle angebotenen Heidenhain-Geräte sind Einzelstücke, getestet und funktionsfähig.
+
+    Ich bin Privatverkäufer und stehe in keiner Verbindung zur Firma Heidenhain.
+    Markennamen werden nur zur Identifikation der Produkte verwendet.
+
+    14 Tage Rückgaberecht, Rücksendung im versendeten Zustand.
+    Versandkosten und Rückversand trägt der Käufer.</span>
+    <button mat-icon-button class="contact-btn" (click)="scrollToFormElement()" aria-label="Kontakt aufnehmen"
+        matTooltip="Kontakt">
+        <mat-icon>mail</mat-icon>
+    </button>
+
+</div> -->
+<div class="text-content">
+  <span class="text">
+    Privater Verkauf aus Lagerauflösung / Kellerfund.
+    Alle angebotenen Heidenhain-Geräte sind Einzelstücke, getestet und funktionsfähig.
+
+    Ich bin Privatverkäufer und stehe in keiner Verbindung zur Firma Heidenhain.
+    Markennamen werden nur zur Identifikation der Produkte verwendet.
+
+    14 Tage Rückgaberecht, Rücksendung im versendeten Zustand.
+    Versandkosten und Rückversand trägt der Käufer.
+  </span>
+
+  <button
+    mat-icon-button
+    class="contact-btn"
+    (click)="scrollToFormElement()"
+    aria-label="Kontakt aufnehmen"
+    matTooltip="Kontakt">
+    <mat-icon>mail</mat-icon>
+  </button>
+</div>
+
 <main>
 
     @for (product of products; track $index) {
     <div class="product-wrapper" [class.fullscreen]="isFullscreenIndex === $index">
-        <!-- <button class="nav left" (click)="prev(product)">❮</button> -->
         <button mat-icon-button matTooltip="zurück" class="nav left" (click)="prev(product)"
             aria-label="Vorheriges Produkt">
             <mat-icon>chevron_left</mat-icon>
@@ -17,7 +53,6 @@
 
         <img [src]="product.images[product.currentIndex]" [alt]="product.title" />
 
-        <!-- <button class="nav right" (click)="next(product)">❯</button> -->
 
         <button matTooltip="nächste" mat-icon-button class="nav right" (click)="prev(product)"
             aria-label="Vorheriges Produkt">
@@ -43,19 +78,6 @@
             </mat-icon>
         </button>
 
-
-        <!-- <button  matTooltip="Vollbild" mat-icon-button class="fullscreen-btn" (click)="toggleFullscreen($index)"
-            [attr.aria-label]="isFullscreenIndex === $index ? 'Exit fullscreen' : 'Enter fullscreen'">
-            <mat-icon>
-                {{ isFullscreenIndex === $index ? 'fullscreen_exit' : 'fullscreen' }}
-            </mat-icon>
-        </button> -->
-
-
-        <!-- @if (isFullscreenIndex != $index) {
-        <button class="contact" (click)="scrollToForm($index)">Kontakt</button>
-        } -->
-
         @if (isFullscreenIndex !== $index) {
         <button mat-icon-button class="contact" (click)="scrollToForm($index)" aria-label="Kontakt aufnehmen"
             matTooltip="Kontakt">
@@ -64,17 +86,12 @@
         }
 
 
-
-
-
         <div class="title">{{ product.title }}</div>
     </div>
     }
 
     <div style="width: 100%; margin-top: 150px; margin-bottom: 80px;  height: 100%;">
 
-
-        <!-- <form #contactForm [formGroup]="form" (ngSubmit)="sendMessage()"  [class.disabled]="isLoading" class="contact-form"> -->
 
         <form #formDirective="ngForm" #contactForm [formGroup]="form" (ngSubmit)="sendMessage(formDirective)"
             class="contact-form" [class.disabled]="isLoading">
@@ -137,18 +154,12 @@
             }
 
 
-            <!-- <button mat-raised-button color="primary" [disabled]="form.invalid">
-      Senden
-    </button> -->
-
             <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || isLoading">
                 {{ isLoading ? 'Wird gesendet...' : 'Senden' }}
             </button>
 
 
         </form>
-
-
 
 
     </div>
@@ -173,30 +184,3 @@
         © {{ currentYear }} Barnabas Gonda
     </span>
 </footer>
-
-
-<!-- <footer>
-    <span> impressum</span>
-    <span>datenschutz</span>
-    <span>copyright</span>
-</footer> -->
-
-
-<!-- <div class="product-wrapper" *ngFor="let product of products; let i = index"
-    [class.fullscreen]="isFullscreenIndex === i">
-    <button class="nav left" (click)="prev(product)">❮</button>
-
-    <img [src]="product.images[product.currentIndex]" [alt]="product.title" />
-
-    <button class="nav right" (click)="next(product)">❯</button>
-
-    <div class="counter">
-        {{ product.currentIndex + 1 }} / {{ product.images.length }}
-    </div>
-
-    <button class="fullscreen-btn" (click)="toggleFullscreen(i)">
-        {{ isFullscreenIndex === i ? 'Exit' : 'Fullscreen' }}
-    </button>
-
-    <div class="title">{{ product.title }}</div>
-</div> -->

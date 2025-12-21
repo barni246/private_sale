@@ -1,47 +1,71 @@
+
+
 <header>
-    <button title="Heidenhain Steuerung LE 355 Drehgeber ROD 700" style="position: fixed; right: 8px;" type="button"
-        routerLink="/">Welcome</button>
-    <h1>Lagerauflösung</h1>
+    <div class="header-content">
+
+
+
+        <div class="datetime">
+            📅 {{ date }} · ⏱ {{ time }}
+        </div>
+
+
+        <h1>Lagerauflösung</h1>
+
+
+        <ul class="info-list">
+            <li [class.active]="activeIndex === 0">✔ Getestete Einzelstücke</li>
+            <li [class.active]="activeIndex === 1">✔ 14 Tage Rückgaberecht</li>
+            <li [class.active]="activeIndex === 2">✔ Privatverkauf</li>
+        </ul>
+
+    </div>
 </header>
 
-<!-- <div class="text-content">
-    <span>Privater Verkauf aus Lagerauflösung / Kellerfund.
-    Alle angebotenen Heidenhain-Geräte sind Einzelstücke, getestet und funktionsfähig.
 
-    Ich bin Privatverkäufer und stehe in keiner Verbindung zur Firma Heidenhain.
-    Markennamen werden nur zur Identifikation der Produkte verwendet.
+<div class="text-content">
+    <span class="text">
+        <b> Privater Verkauf aus Lagerauflösung.</b>
+        <br>
+        Alle angebotenen Heidenhain-Geräte sind Einzelstücke, getestet und funktionsfähig.
+        <br>
+        Ich bin Privatverkäufer und stehe in keiner Verbindung zur Firma Heidenhain.
+        Markennamen werden nur zur Identifikation der Produkte verwendet.
+        <br>
+        14 Tage Rückgaberecht, Rücksendung im versendeten Zustand.
+        Versandkosten und Rückversand trägt der Käufer.
+        <br>
+        Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit Mehrwertsteuer.
+    </span>
 
-    14 Tage Rückgaberecht, Rücksendung im versendeten Zustand.
-    Versandkosten und Rückversand trägt der Käufer.</span>
+    <!-- <span class="text">
+    Privatverkauf - Lagerauflösung
+<br><br>
+Die hier angebotenen Heidenhain-Geräte stammen aus einer privaten Lagerauflösung (Kellerfund).
+Alle Geräte sind nur einmal vorhanden, wurden getestet und sind voll funktionsfähig, sofern nicht anders angegeben.
+<br><br>
+Der Verkauf erfolgt ausschließlich privat.
+Es besteht keine geschäftliche oder sonstige Verbindung zur Firma Heidenhain.
+Alle genannten Marken- und Produktnamen dienen lediglich der Beschreibung der angebotenen Artikel.
+<br><br>
+Rückgabe:
+Ich gewähre eine Rückgabegarantie von 14 Tagen ab Erhalt der Ware.
+Die Rücksendung muss im gleichen Zustand erfolgen, wie die Ware versendet wurde.
+Die Kosten und das Risiko des Rückversands trägt der Käufer.
+<br><br>
+Hinweis:
+Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit Mehrwertsteuer.
+  </span> -->
+
     <button mat-icon-button class="contact-btn" (click)="scrollToFormElement()" aria-label="Kontakt aufnehmen"
         matTooltip="Kontakt">
         <mat-icon>mail</mat-icon>
     </button>
-
-</div> -->
-<div class="text-content">
-  <span class="text">
-    Privater Verkauf aus Lagerauflösung / Kellerfund.
-    Alle angebotenen Heidenhain-Geräte sind Einzelstücke, getestet und funktionsfähig.
-
-    Ich bin Privatverkäufer und stehe in keiner Verbindung zur Firma Heidenhain.
-    Markennamen werden nur zur Identifikation der Produkte verwendet.
-
-    14 Tage Rückgaberecht, Rücksendung im versendeten Zustand.
-    Versandkosten und Rückversand trägt der Käufer.
-  </span>
-
-  <button
-    mat-icon-button
-    class="contact-btn"
-    (click)="scrollToFormElement()"
-    aria-label="Kontakt aufnehmen"
-    matTooltip="Kontakt">
-    <mat-icon>mail</mat-icon>
-  </button>
 </div>
 
 <main>
+
+
 
     @for (product of products; track $index) {
     <div class="product-wrapper" [class.fullscreen]="isFullscreenIndex === $index">
@@ -90,8 +114,10 @@
     </div>
     }
 
-    <div style="width: 100%; margin-top: 150px; margin-bottom: 80px;  height: 100%;">
+    <div class="form-wrapper">
 
+
+        <img class="form-wrapper-image" src="/img/LE355B.png" alt="">
 
         <form #formDirective="ngForm" #contactForm [formGroup]="form" (ngSubmit)="sendMessage(formDirective)"
             class="contact-form" [class.disabled]="isLoading">
@@ -154,7 +180,7 @@
             }
 
 
-            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || isLoading">
+            <button  mat-raised-button color="primary" type="submit" [disabled]="form.invalid || isLoading">
                 {{ isLoading ? 'Wird gesendet...' : 'Senden' }}
             </button>
 

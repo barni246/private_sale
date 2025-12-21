@@ -228,7 +228,7 @@
 /* ===========================
    Angular / Core
 =========================== */
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -260,6 +260,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { interval, Subscription } from 'rxjs';
 
 /* ===========================
    Interfaces
@@ -281,6 +282,7 @@ interface Product {
     FormsModule,
     ReactiveFormsModule,
 
+
     /* Material */
     MatFormFieldModule,
     MatInputModule,
@@ -288,7 +290,8 @@ interface Product {
     MatIconModule,
     MatProgressBar,
     MatChipsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    
   ]
 })
 export class Products {
@@ -336,16 +339,52 @@ export class Products {
     }
   ];
 
+   activeIndex = 0;
+
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef
   ) {}
 
   /* ===========================
      Lifecycle
   =========================== */
+  // ngOnInit(): void {
+  //   this.initForm();
+  // }
+
+date = '';
+  time = '';
+  private sub!: Subscription;
+
+
   ngOnInit(): void {
     this.initForm();
+    this.updateDateTime();
+
+    this.sub = interval(1000).subscribe(() => {
+      this.updateDateTime();
+      this.cdr.markForCheck();  // <- wichtig, um View zu aktualisieren
+    });
+     this.sub = interval(1000).subscribe(() => {
+      this.activeIndex = (this.activeIndex + 1) % 3;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+  }
+
+  private updateDateTime(): void {
+    const now = new Date();
+    this.date = now.toLocaleDateString('de-DE');
+    this.time = now.toLocaleTimeString('de-DE', {
+      hour12: false,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
   }
 
   /* ===========================
@@ -449,7 +488,7 @@ export class Products {
   }
 
   public scrollToFormElement(): void {
-    const yOffset = -100;
+    const yOffset = -150;
     const element = this.contactForm.nativeElement;
     const y =
       element.getBoundingClientRect().top +

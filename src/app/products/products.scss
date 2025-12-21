@@ -1,53 +1,100 @@
-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    background-color: #005cbb;
-    color: chartreuse;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1000;
-     box-shadow: 0 4px 8px rgba(0, 92, 187, 0.35);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+// header {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 80px;
+//     background-color: #005cbb;
+//     color: chartreuse;
+//     position: fixed;
+//     top: 0;
+//     right: 0;
+//     left: 0;
+//     z-index: 1000;
+//     box-shadow: 0 4px 8px rgba(0, 92, 187, 0.35);
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 
-    h1 {
-        letter-spacing: 3px;
-        font-size: 35px !important;
-    }
+//     h1 {
+//         letter-spacing: 3px;
+//         font-size: 35px !important;
+//     }
+// }
+
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #005cbb;
+  color: #ffffff;
+  z-index: 1000;
+  box-shadow: 0 6px 12px -4px rgba(0, 0, 0, 0.45);
 }
 
-// .text-content {
-//     padding: 120px 48px 0px 48px;
-//     background-color: rgba(0, 0, 0, 0.2);
-//     font-size: 22px;
-//     font-weight: 500;
-//     color: #005cbb;
-//     line-height: 1.6;
-//     position: relative;
-//     border: 1px red solid;
-//     display: inline;
+.header-content {
+  padding: 16px 24px;
+ // text-align: center;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
 
-//     .contact-btn {
-//         display: inline-flex;
-//         vertical-align: middle;
-//         margin-left: 6px;
-//     }
+h1 {
+  margin: 0;
+  font-size: 36px;
+  letter-spacing: 3px;
+  color: chartreuse;
+}
 
+.datetime {
+  margin-top: 6px;
+  font-family: monospace;
+  font-size: 14px;
+  opacity: 0.9;
+  border: rgb(151, 151, 151) 1px solid;
+  padding: 6px;
+  border-radius: 2px;
+}
+
+// .info-list {
+//   list-style: none;
+//   padding: 0;
+//   margin: 14px 0;
+//   font-size: 14px;
+
+//   li {
+//     margin: 4px 0;
+//   }
 // }
+
+.info-list li {
+  color: white;
+  transition: color 0.5s ease;
+}
+
+.info-list li.active {
+  color: chartreuse;
+}
+
+
+
+
+
 
 
 
 .text-content {
-    padding: 140px 48px 0 48px;
+        border-left: rgba(0, 0, 0, 0.03) solid 32px;
+    border-right: rgba(0, 0, 0, 0.03) solid 32px;
+
+    padding: 200px 48px 0 48px;
     background-color: rgba(0, 0, 0, 0.2);
     font-size: 22px;
     font-weight: 500;
     color: #005cbb;
     line-height: 1.6;
     position: relative;
+    text-align: center;
 }
 
 /* Text inline halten */
@@ -64,7 +111,7 @@ header {
     vertical-align: middle;
     margin-left: 6px;
     padding: 0;
-     border: #005cbb 2px solid;
+    border: #005cbb 2px solid;
     border-radius: 100%;
     background-color: #005cbb;
     color: chartreuse;
@@ -82,7 +129,7 @@ header {
 
 
 main {
-    padding: 90px 24px 0px 24px;
+    padding: 80px 24px 0px 24px;
     display: flex;
     width: 100vw;
     max-width: 100%;
@@ -91,6 +138,9 @@ main {
     gap: 64px;
     background-color: rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
+    border-left: rgba(0, 0, 0, 0.03) solid 32px;
+        border-right: rgba(0, 0, 0, 0.03) solid 32px;
+
 
 
 }
@@ -103,15 +153,11 @@ main {
     height: 480px;
     position: relative;
     background: #111;
-    background-color: rgba(0, 0, 0, 0.4);
-     background-color: rgba(0, 0, 0, 0.3);
-     background-color: rgb(83, 112, 147);
-      background-color: rgb(103, 130, 164);
+    background-color: rgb(103, 130, 164);
     border-radius: 2px;
     box-sizing: border-box;
     padding: 5px;
-   // border: 2px solid #005cbb;
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 
 }
 
@@ -273,6 +319,29 @@ main {
     object-fit: contain;
 }
 
+.form-wrapper {
+    width: 100%;
+    margin-top: 90px;
+    margin-bottom: 80px;
+    height: 100%;
+    position: relative;
+
+    .form-wrapper-image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        object-fit: fill;
+        opacity: 0.04;
+        filter: brightness(1.5);
+    }
+}
+
+
+
 
 .contact-form {
     max-width: 450px;
@@ -340,7 +409,6 @@ button[mat-raised-button] {
 footer {
     height: 80px;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
     background-color: #005cbb;
     color: white;
     font-size: 18px;

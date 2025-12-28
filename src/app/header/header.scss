@@ -33,17 +33,24 @@ header {
 
 .header-content {
   padding: 16px 24px;
- // text-align: center;
- display: flex;
- justify-content: space-between;
- align-items: center;
+  // text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-h1 {
-  margin: 0;
-  font-size: 36px;
+.title-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.title {
+  font-size: 38px;
+  font-weight: 800;
   letter-spacing: 3px;
-  color: chartreuse;
+  color: whitesmoke;
+  margin-bottom: 8px;
 }
 
 .datetime {
@@ -51,7 +58,7 @@ h1 {
   font-family: monospace;
   font-size: 14px;
   opacity: 0.9;
-  border: rgb(151, 151, 151) 1px solid;
+  //  border: rgb(151, 151, 151) 1px solid;
   padding: 6px;
   border-radius: 2px;
 }
@@ -75,6 +82,3 @@ h1 {
 .info-list li.active {
   color: chartreuse;
 }
-
-
-

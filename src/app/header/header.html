@@ -1,0 +1,23 @@
+<header>
+    <div class="header-content">
+
+
+
+        <div class="datetime">
+            📅 {{ date }} · ⏱ {{ time }}
+        </div>
+
+
+        <h1>Lagerauflösung</h1>
+
+
+        <ul class="info-list">
+            <li [class.active]="activeIndex === 0">✔ Getestete Einzelstücke</li>
+            <li [class.active]="activeIndex === 1">✔ 14 Tage Rückgaberecht</li>
+            <li [class.active]="activeIndex === 2">✔ Privatverkauf</li>
+        </ul>
+
+    </div>
+</header>
+
+

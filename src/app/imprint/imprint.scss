@@ -1,0 +1,62 @@
+.imprint {
+   // height: 65.5vh;
+    padding-top: 150px;
+    padding-left: 10%;
+    box-sizing: border-box;
+    background-color: rgb(221, 221, 221);
+   height: calc(100vh - 80px);
+   a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+        color: #9747ff;
+    }
+   }
+
+   .address {
+    cursor: pointer;
+    &:hover {
+        color: #9747ff;
+    }
+   }
+}
+
+.go-back {
+    cursor: pointer;
+}
+
+.back-icon mat-icon {
+     color: chartreuse;
+      border: 2px solid chartreuse;
+    border-radius: 100%;
+    padding: 3px;
+    background-color: dodgerblue;
+    transition: all 200ms ease-in-out;
+}
+
+.back-icon a:hover mat-icon {
+   
+    
+     background-color: orangered;
+   
+     color: dodgerblue;
+    border: 2px solid chartreuse;
+}
+
+
+@media screen and (max-width: 750px) {
+
+    .imprint {
+       // padding-top: 80px !important;
+        // height: calc(100vh - 280px);
+           p {
+        font-size: 12px !important;
+    }
+    }
+   .address {
+    font-size: 12px !important;
+  
+   }
+}
+
+

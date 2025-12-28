@@ -1,28 +1,4 @@
 
-
-<header>
-    <div class="header-content">
-
-
-
-        <div class="datetime">
-            📅 {{ date }} · ⏱ {{ time }}
-        </div>
-
-
-        <h1>Lagerauflösung</h1>
-
-
-        <ul class="info-list">
-            <li [class.active]="activeIndex === 0">✔ Getestete Einzelstücke</li>
-            <li [class.active]="activeIndex === 1">✔ 14 Tage Rückgaberecht</li>
-            <li [class.active]="activeIndex === 2">✔ Privatverkauf</li>
-        </ul>
-
-    </div>
-</header>
-
-
 <div class="text-content">
     <span class="text">
         <b> Privater Verkauf aus Lagerauflösung.</b>
@@ -192,21 +168,3 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
 
 
 </main>
-
-
-<footer class="app-footer">
-    <!-- Impressum -->
-    <a mat-icon-button routerLink="/impressum" matTooltip="Impressum" aria-label="Impressum">
-        <mat-icon>description</mat-icon>
-    </a>
-
-    <!-- Datenschutz -->
-    <a mat-icon-button routerLink="/datenschutz" matTooltip="Datenschutz" aria-label="Datenschutz">
-        <mat-icon>policy</mat-icon>
-    </a>
-
-    <!-- Copyright -->
-    <span class="copyright">
-        © {{ currentYear }} Barnabas Gonda
-    </span>
-</footer>

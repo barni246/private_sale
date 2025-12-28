@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import {  WelcomeComponent } from './welcome/welcome';
 import { Products } from './products/products';
+import { Imprint } from './imprint/imprint';
 
 
 
 export const routes: Routes = [
 
- { path: '', component: WelcomeComponent },
- { path: 'products', component: Products },
+ { path: '', component: Products },
+  { path: 'imprint', component: Imprint },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 
 ];

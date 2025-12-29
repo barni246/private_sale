@@ -1,7 +1,6 @@
 .imprint {
-   // height: 65.5vh;
     padding-top: 150px;
-    padding-left: 10%;
+    padding-left: 28px;
     box-sizing: border-box;
     background-color: rgb(221, 221, 221);
    height: calc(100vh - 80px);
@@ -13,17 +12,12 @@
     }
    }
 
-   .address {
-    cursor: pointer;
-    &:hover {
-        color: #9747ff;
-    }
-   }
 }
 
 .go-back {
     cursor: pointer;
 }
+
 
 .back-icon mat-icon {
      color: chartreuse;

@@ -1,0 +1,41 @@
+section {
+    padding: 160px 32px 80px 32px;
+    box-sizing: border-box;
+    background-color: rgb(221, 221, 221);
+    min-height: 100vh;
+    position: relative;
+}
+
+
+.back-icon {
+    position: fixed;
+    bottom: 100px;
+    left: 28px;
+    z-index: 1000;
+}
+
+a {
+    text-decoration: none;
+}
+
+.back-icon a {
+    display: block;
+}
+
+.back-icon mat-icon {
+    color: chartreuse;
+    border: 2px solid chartreuse;
+    border-radius: 100%;
+    padding: 3px;
+    background-color: dodgerblue;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+}
+
+
+.back-icon a:hover mat-icon {
+    background-color: orangered;
+    color: dodgerblue;
+    border: 2px solid chartreuse;
+    transition: all 200ms ease-in-out;
+}

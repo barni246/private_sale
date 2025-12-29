@@ -1,23 +1,4 @@
-// header {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 80px;
-//     background-color: #005cbb;
-//     color: chartreuse;
-//     position: fixed;
-//     top: 0;
-//     right: 0;
-//     left: 0;
-//     z-index: 1000;
-//     box-shadow: 0 4px 8px rgba(0, 92, 187, 0.35);
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 
-//     h1 {
-//         letter-spacing: 3px;
-//         font-size: 35px !important;
-//     }
-// }
 
 
 header {
@@ -37,6 +18,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .title-wrapper {
@@ -73,6 +55,10 @@ header {
 //     margin: 4px 0;
 //   }
 // }
+
+.info-list {
+  padding-right: 12px;
+}
 
 .info-list li {
   color: white;

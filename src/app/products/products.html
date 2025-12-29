@@ -1,6 +1,33 @@
-
 <div class="text-content">
+
+    <meta name="description"
+        content="Privater Einmalverkauf gebrauchter Heidenhain Messsysteme (LE 355, LE 415, LE 426, ROD 700) aus Lagerauflösung. Freiwillige Rückgabe innerhalb von 14 Tagen aus Kulanz.">
+
     <span class="text">
+        <h2><b>Privater Einmalverkauf aus Lagerauflösung</b></h2>
+
+        <h4> Alle angebotenen Heidenhain-Geräte stammen aus meinem privaten Besitz.
+            Es handelt sich um Einzelstücke aus einer einmaligen Lagerauflösung.
+            Die Geräte sind gebraucht und wurden geprüft bzw. getestet.</h4>
+
+        <h4>Ich bin Privatverkäufer und stehe in keiner geschäftlichen oder
+            sonstigen Verbindung zur Firma Heidenhain.
+            Genannte Markennamen dienen ausschließlich der eindeutigen
+            Identifikation der angebotenen Produkte.</h4>
+
+        <h4> Eine <b>freiwillige Rückgabe innerhalb von 14 Tagen</b> wird aus Kulanz angeboten,
+            falls ein Artikel nicht wie beschrieben funktioniert.
+            Die Rücksendung hat im original versendeten Zustand zu erfolgen.
+            Versandkosten sowie Rückversandkosten trägt der Käufer.</h4>
+
+        <h4>Da es sich um einen privaten Verkauf handelt,
+            erfolgt der Verkauf <b>ohne Rechnung und ohne Ausweis von Mehrwertsteuer</b>.</h4>
+    </span>
+
+
+
+
+    <!-- <span class="text">
         <b style="font-size: larger;"> Privater Verkauf aus Lagerauflösung.</b>
         <br><br>
         Alle angebotenen Heidenhain-Geräte sind Einzelstücke, getestet und funktionsfähig.
@@ -12,7 +39,7 @@
         Versandkosten und Rückversand trägt der Käufer.
         <br>
         Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit Mehrwertsteuer.
-    </span>
+    </span> -->
 
     <!-- <span class="text">
     Privatverkauf - Lagerauflösung
@@ -86,7 +113,7 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
         }
 
 
-        <div class="title">{{ product.title }}</div>
+        <h2 class="title">{{ product.title }}</h2>
     </div>
     }
 
@@ -156,7 +183,7 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
             }
 
 
-            <button  mat-raised-button color="primary" type="submit" [disabled]="form.invalid || isLoading">
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || isLoading">
                 {{ isLoading ? 'Wird gesendet...' : 'Senden' }}
             </button>
 

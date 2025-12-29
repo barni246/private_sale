@@ -106,6 +106,21 @@ export class Products {
       title: 'Produkt C',
       images: ['/img/ts649.png', '/img/LE355B.png'],
       currentIndex: 0
+    },
+    {
+      title: 'Produkt C',
+      images: ['/img/ts649.png', '/img/LE355B.png'],
+      currentIndex: 0
+    },
+    {
+      title: 'Produkt C',
+      images: ['/img/ts649.png', '/img/LE355B.png'],
+      currentIndex: 0
+    },
+    {
+      title: 'Produkt C',
+      images: ['/img/ts649.png', '/img/LE355B.png'],
+      currentIndex: 0
     }
   ];
 

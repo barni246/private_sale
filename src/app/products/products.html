@@ -72,16 +72,17 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
 
     @for (product of products; track $index) {
     <div class="product-wrapper" [class.fullscreen]="isFullscreenIndex === $index">
-        <button mat-icon-button matTooltip="zurück" class="nav left" (click)="prev(product)"
+        <button mat-icon-button matTooltip="zurück" class="nav left" (click)="prevLeft(product)"
             aria-label="Vorheriges Produkt">
             <mat-icon>chevron_left</mat-icon>
         </button>
 
 
-        <img [src]="product.images[product.currentIndex]" [alt]="product.title" />
+        <img  [src]="product.images[product.currentIndex]" [alt]="product.title" />
+        
 
 
-        <button matTooltip="nächste" mat-icon-button class="nav right" (click)="prev(product)"
+        <button matTooltip="nächste" mat-icon-button class="nav right" (click)="prevRight(product)"
             aria-label="Vorheriges Produkt">
             <mat-icon>chevron_right</mat-icon>
         </button>

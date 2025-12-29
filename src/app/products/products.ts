@@ -93,33 +93,64 @@ export class Products {
   =========================== */
   products: Product[] = [
     {
-      title: 'LE 355B: General überholt, getestet',
-      images: ['/img/ts649.png', '/img/LE355B.png'],
+      title: 'Heidenhain ROD 850 36000 Drehgeber, überholt und getestet.',
+      images: [
+        '/img/rod850/rod850-1-400.jpg', 
+        '/img/rod850/rod850-2.jpg', 
+        '/img/rod850/rod850-3.jpg', 
+        '/img/rod850/rod850-4.jpg', 
+        '/img/rod850/rod850-5.jpg', 
+      ],
       currentIndex: 0
     },
     {
-      title: 'Produkt B',
-      images: ['/img/ts649.png', '/img/LE355B.png'],
+      title: 'Heidenhain LE 415B, getestete Steuerung.',
+      images: [
+        '/img/le415b/le415-1-400.jpg', 
+         '/img/le415b/le415-2.jpg',
+         '/img/le415b/le415-3.jpg',
+         '/img/le415b/le415-4.jpg',
+         '/img/le415b/le415-5.jpg',
+         '/img/le415b/le415-6.jpg',
+         '/img/le415b/le415-7.jpg',
+      ],
       currentIndex: 0
     },
     {
-      title: 'Produkt C',
-      images: ['/img/ts649.png', '/img/LE355B.png'],
+      title: 'Heidenhain Stromversorgung UV 105 , überholt und getestet.',
+      images: [
+        '/img/uv105/uv105-1-400.png', 
+        '/img/uv105/uv105-2.jpg',
+        '/img/uv105/uv105-3.jpg',
+        '/img/uv105/uv105-4.jpg',
+        '/img/uv105/uv105-5.jpg'
+      ],
       currentIndex: 0
     },
     {
-      title: 'Produkt C',
-      images: ['/img/ts649.png', '/img/LE355B.png'],
+      title: 'Heidenhain LE 355B Bahnsteuerung, überholt und getestet.',
+      images: [
+        '/img/le355b/le355b-1-400.jpg',
+        '/img/le355b/le355b-2.jpg',
+        '/img/le355b/le355b-3.jpg',
+        '/img/le355b/le355b-4.jpg',
+        '/img/le355b/le355b-5.jpg',
+        '/img/le355b/le355b-6.jpg',
+      ],
       currentIndex: 0
     },
     {
-      title: 'Produkt C',
-      images: ['/img/ts649.png', '/img/LE355B.png'],
+      title: 'Heidenhain Drehgeber ROD 700 3M Kabel, überholt und getestet.',
+      images: [
+        '/img/rod700/rod700-1-400.jpg',
+        '/img/rod700/rod700-2.jpg',
+        '/img/rod700/rod700-3.jpg',
+      ],
       currentIndex: 0
     },
     {
-      title: 'Produkt C',
-      images: ['/img/ts649.png', '/img/LE355B.png'],
+      title: 'Heidenhain LE 426PB Steuerung, überholt und getestet.(Fotos kommen noch!)',
+      images: ['/img/le426pb/le426pb-1-400.jpg'],
       currentIndex: 0
     }
   ];
@@ -172,7 +203,13 @@ export class Products {
       (product.currentIndex + 1) % product.images.length;
   }
 
-  prev(product: Product): void {
+  prevRight(product: Product): void {
+    product.currentIndex =
+      (product.currentIndex + 1 + product.images.length) %
+      product.images.length;
+  }
+
+  prevLeft(product: Product): void {
     product.currentIndex =
       (product.currentIndex - 1 + product.images.length) %
       product.images.length;

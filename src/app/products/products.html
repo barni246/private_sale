@@ -158,6 +158,13 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
           </button>
         
           <h2 class="title">{{ product.title }}</h2>
+
+          @if (isFullscreenIndex !== $index) {
+            <button mat-icon-button class="contact" (click)="scrollToForm($index)" aria-label="Kontakt aufnehmen"
+                matTooltip="Kontakt">
+                <mat-icon>mail</mat-icon>
+            </button>
+            }
         
         </div>
         }
@@ -173,10 +180,10 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
         @if (fullscreenImage) {
             <div class="lightbox">
           
-              <button class="fs-nav left"
+              <button class="nav left"
                       (click)="prevFullscreen()"
                       aria-label="Vorheriges Bild">
-                ‹
+                      <mat-icon>chevron_left</mat-icon>
               </button>
           
 
@@ -184,12 +191,12 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
   [src]="fullscreenImage"
   (click)="toggleFullscreen(isFullscreenIndex!)"
 />
-
+  
           
-              <button class="fs-nav right"
+              <button class="nav right"
                       (click)="nextFullscreen()"
                       aria-label="Nächstes Bild">
-                ›
+                      <mat-icon>chevron_right</mat-icon>
               </button>
           
               <div class="fs-counter">
@@ -198,10 +205,13 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
                 {{ getBlockSize(products[isFullscreenIndex!]) }}
               </div>
           
-              <button class="fs-close"
+              <button  class="fullscreen-btn"
                       (click)="toggleFullscreen(isFullscreenIndex!)">
-                ✕
+                      <mat-icon>
+                        fullscreen
+                      </mat-icon>
               </button>
+              
           
             </div>
           }
@@ -214,7 +224,7 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
     <div class="form-wrapper">
 
 
-        <img class="form-wrapper-image" src="/img/le415b/le415-5.jpg" alt="">
+        <img class="form-wrapper-image" src="/img/le415b/le415b-5-720.jpg" alt="">
 
         <form #formDirective="ngForm" #contactForm [formGroup]="form" (ngSubmit)="sendMessage(formDirective)"
             class="contact-form" [class.disabled]="isLoading">

@@ -2,7 +2,7 @@
 /* ===========================
    Angular / Core
 =========================== */
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /* ===========================
@@ -78,23 +78,43 @@ export class Products {
   isLoading = false;
   rateLimitError = '';
 
-  getBlockSize(product: Product): number {
-    return product.images.length / 4;
-  }
+  // getBlockSize(product: Product): number {
+  //   return product.images.length / 4;
+  // }
+
+
+  // getImage(product: Product, size: '400' | '720' | '1440' | 'original'): string {
+  //   const block = this.getBlockSize(product);
+  //   const index = product.currentIndex;
+
+  //   const offset =
+  //     size === '400' ? 0 :
+  //     size === '720' ? block :
+  //     size === '1440' ? block * 2 :
+  //     block * 3;
+
+  //   return product.images[offset + index];
+  // }
+
 
 
   getImage(product: Product, size: '400' | '720' | '1440' | 'original'): string {
-    const block = this.getBlockSize(product);
-    const index = product.currentIndex;
-
+    const baseIndex = product.currentIndex;
+    const blockSize = this.getBlockSize(product);
     const offset =
       size === '400' ? 0 :
-      size === '720' ? block :
-      size === '1440' ? block * 2 :
-      block * 3;
-
-    return product.images[offset + index];
+      size === '720' ? blockSize :
+      size === '1440' ? blockSize * 2 :
+      blockSize * 3;
+  
+    return product.images[offset + baseIndex];
   }
+  
+  getBlockSize(product: Product): number {
+    return product.images.length / 4;
+  }
+  
+
 
 
 
@@ -303,6 +323,15 @@ export class Products {
   //   this.isFullscreenIndex =
   //     this.isFullscreenIndex === index ? null : index;
   // }
+
+
+  @HostListener('document:keydown.escape')
+closeOnEscape() {
+  if (this.isFullscreenIndex !== null) {
+    this.toggleFullscreen(this.isFullscreenIndex);
+  }
+}
+
 
   toggleFullscreen(productIndex: number) {
     if (this.isFullscreenIndex === productIndex) {

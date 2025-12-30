@@ -317,4 +317,67 @@ button[mat-raised-button] {
         opacity: 1;
         transform: translateY(0);
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+
+
+
+
+
+
+.product-wrapper {
+    position: relative;
+    max-width: 720px;
+    margin: 2rem auto;
+    text-align: center;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+    cursor: zoom-in;
+  }
+  
+  .nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .nav.left { left: 0; }
+  .nav.right { right: 0; }
+  
+  .counter {
+    margin-top: .5rem;
+    font-size: .9rem;
+  }
+  
+  .fullscreen-btn {
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+  }
+  
+  /* LIGHTBOX */
+  
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+  
+    img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+      cursor: zoom-out;
+    }
+  }
+  
+
+>>>>>>> Stashed changes

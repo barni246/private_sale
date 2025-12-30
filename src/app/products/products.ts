@@ -34,9 +34,8 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-/* ===========================
-   Interfaces
-=========================== */
+import { PRODUCTS } from './products.data';
+
 interface Product {
   title: string;
   images: string[];
@@ -62,7 +61,7 @@ interface Product {
     MatProgressBar,
     MatChipsModule,
     MatTooltipModule,
-    
+
   ]
 })
 export class Products {
@@ -72,227 +71,78 @@ export class Products {
   readonly maxMessages = 3;
   readonly storageKey = 'contact_rate_limit';
 
-  
   isFullscreenIndex: number | null = null;
   fullscreenImage: string | null = null;
   isLoading = false;
   rateLimitError = '';
-
-  // getBlockSize(product: Product): number {
-  //   return product.images.length / 4;
-  // }
-
-
-  // getImage(product: Product, size: '400' | '720' | '1440' | 'original'): string {
-  //   const block = this.getBlockSize(product);
-  //   const index = product.currentIndex;
-
-  //   const offset =
-  //     size === '400' ? 0 :
-  //     size === '720' ? block :
-  //     size === '1440' ? block * 2 :
-  //     block * 3;
-
-  //   return product.images[offset + index];
-  // }
-
-
-
-  getImage(product: Product, size: '400' | '720' | '1440' | 'original'): string {
-    const baseIndex = product.currentIndex;
-    const blockSize = this.getBlockSize(product);
-    const offset =
-      size === '400' ? 0 :
-      size === '720' ? blockSize :
-      size === '1440' ? blockSize * 2 :
-      blockSize * 3;
-  
-    return product.images[offset + baseIndex];
-  }
-  
-  getBlockSize(product: Product): number {
-    return product.images.length / 4;
-  }
-  
-
-
-
-
-
+  products: Product[] = [];
 
   @ViewChild('contactForm') contactForm!: ElementRef<HTMLElement>;
   form!: FormGroup;
-
-  products: Product[] = [
-    {
-      title: 'Heidenhain ROD 850 36000 Drehgeber, überholt und getestet. Der Preis ist 1450,00€',
-      images: [
-        '/img/rod850/rod850-1-400.jpg', 
-        '/img/rod850/rod850-2-400.jpg', 
-        '/img/rod850/rod850-3-400.jpg', 
-        '/img/rod850/rod850-4-400.jpg', 
-        '/img/rod850/rod850-5-400.jpg', 
-
-        '/img/rod850/rod850-1-720.jpg', 
-        '/img/rod850/rod850-2-720.jpg', 
-        '/img/rod850/rod850-3-720.jpg', 
-        '/img/rod850/rod850-4-720.jpg', 
-        '/img/rod850/rod850-5-720.jpg', 
-
-        '/img/rod850/rod850-1-1440.jpg', 
-        '/img/rod850/rod850-2-1440.jpg', 
-        '/img/rod850/rod850-3-1440.jpg', 
-        '/img/rod850/rod850-4-1440.jpg', 
-        '/img/rod850/rod850-5-1440.jpg', 
-
-        '/img/rod850/rod850-1-original.jpg', 
-        '/img/rod850/rod850-2-original.jpg', 
-        '/img/rod850/rod850-3-original.jpg', 
-        '/img/rod850/rod850-4-original.jpg', 
-        '/img/rod850/rod850-5-original.jpg', 
-      ],
-      currentIndex: 0
-    },
-    {
-      title: 'Heidenhain LE 415B Steuerung, überholt und getestet. Der Preis ist 1450,00€',
-      images: [
-        '/img/le415b/le415b-1-400.jpg', 
-         '/img/le415b/le415b-2-400.jpg',
-         '/img/le415b/le415b-3-400.jpg',
-         '/img/le415b/le415b-4-400.jpg',
-         '/img/le415b/le415b-5-400.jpg',
-         '/img/le415b/le415b-6-400.jpg',
-         '/img/le415b/le415b-7-400.jpg',
-
-         '/img/le415b/le415b-1-720.jpg', 
-         '/img/le415b/le415b-2-720.jpg',
-         '/img/le415b/le415b-3-720.jpg',
-         '/img/le415b/le415b-4-720.jpg',
-         '/img/le415b/le415b-5-720.jpg',
-         '/img/le415b/le415b-6-720.jpg',
-         '/img/le415b/le415b-7-720.jpg',
-
-         '/img/le415b/le415b-1-1440.jpg', 
-         '/img/le415b/le415b-2-1440.jpg',
-         '/img/le415b/le415b-3-1440.jpg',
-         '/img/le415b/le415b-4-1440.jpg',
-         '/img/le415b/le415b-5-1440.jpg',
-         '/img/le415b/le415b-6-1440.jpg',
-         '/img/le415b/le415b-7-1440.jpg',
-
-         '/img/le415b/le415b-1-original.jpg', 
-         '/img/le415b/le415b-2-original.jpg',
-         '/img/le415b/le415b-3-original.jpg',
-         '/img/le415b/le415b-4-original.jpg',
-         '/img/le415b/le415b-5-original.jpg',
-         '/img/le415b/le415b-6-original.jpg',
-         '/img/le415b/le415b-7-original.jpg',
-      ],
-      currentIndex: 0
-    },
-    {
-      title: 'Heidenhain Stromversorgung UV 105 , überholt und getestet.',
-      images: [
-        '/img/uv105/uv105-1-400.jpg', 
-        '/img/uv105/uv105-2-400.jpg',
-        '/img/uv105/uv105-3-400.jpg',
-        '/img/uv105/uv105-4-400.jpg',
-
-        '/img/uv105/uv105-1-720.jpg', 
-        '/img/uv105/uv105-2-720.jpg',
-        '/img/uv105/uv105-3-720.jpg',
-        '/img/uv105/uv105-4-720.jpg',
-
-        '/img/uv105/uv105-1-1440.jpg', 
-        '/img/uv105/uv105-2-1440.jpg',
-        '/img/uv105/uv105-3-1440.jpg',
-        '/img/uv105/uv105-4-1440.jpg',
-
-        '/img/uv105/uv105-1-original.jpg', 
-        '/img/uv105/uv105-2-original.jpg',
-        '/img/uv105/uv105-3-original.jpg',
-        '/img/uv105/uv105-4-original.jpg',
-      ],
-      currentIndex: 0
-    },
-    {
-      title: 'Heidenhain LE 355B Bahnsteuerung, überholt und getestet.',
-      images: [
-        '/img/le355b/le355b-1-400.jpg',
-        '/img/le355b/le355b-2-400.jpg',
-        '/img/le355b/le355b-3-400.jpg',
-        '/img/le355b/le355b-4-400.jpg',
-        '/img/le355b/le355b-5-400.jpg',
-        '/img/le355b/le355b-6-400.jpg',
-        '/img/le355b/le355b-7-400.jpg',
-
-        '/img/le355b/le355b-1-720.jpg',
-        '/img/le355b/le355b-2-720.jpg',
-        '/img/le355b/le355b-3-720.jpg',
-        '/img/le355b/le355b-4-720.jpg',
-        '/img/le355b/le355b-5-720.jpg',
-        '/img/le355b/le355b-6-720.jpg',
-        '/img/le355b/le355b-7-720.jpg',
-
-        '/img/le355b/le355b-1-1440.jpg',
-        '/img/le355b/le355b-2-1440.jpg',
-        '/img/le355b/le355b-3-1440.jpg',
-        '/img/le355b/le355b-4-1440.jpg',
-        '/img/le355b/le355b-5-1440.jpg',
-        '/img/le355b/le355b-6-1440.jpg',
-        '/img/le355b/le355b-7-1440.jpg',
-        
-        '/img/le355b/le355b-1-original.jpg',
-        '/img/le355b/le355b-2-original.jpg',
-        '/img/le355b/le355b-3-original.jpg',
-        '/img/le355b/le355b-4-original.jpg',
-        '/img/le355b/le355b-5-original.jpg',
-        '/img/le355b/le355b-6-original.jpg',
-        '/img/le355b/le355b-7-original.jpg'
-        
-      ],
-      currentIndex: 0
-    },
-    {
-      title: 'Heidenhain Drehgeber ROD 700 3M Kabel, überholt und getestet.',
-      images: [
-        '/img/rod700/rod700-1-400.jpg',
-        '/img/rod700/rod700-2-400.jpg',
-        '/img/rod700/rod700-3-400.jpg',
-
-        '/img/rod700/rod700-1-720.jpg',
-        '/img/rod700/rod700-2-720.jpg',
-        '/img/rod700/rod700-3-720.jpg',
-
-        '/img/rod700/rod700-1-1440.jpg',
-        '/img/rod700/rod700-2-1440.jpg',
-        '/img/rod700/rod700-3-1440.jpg',
-
-        '/img/rod700/rod700-1-original.jpg',
-        '/img/rod700/rod700-2-original.jpg',
-        '/img/rod700/rod700-3-original.jpg',
-      ],
-      currentIndex: 0
-    },
-    {
-      title: 'Heidenhain LE 426PB Steuerung, überholt und getestet.(Fotos kommen noch!)',
-      images: ['/img/le426pb/le426pb-1-400.jpg'],
-      currentIndex: 0
-    }
-  ];
 
 
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-  ) {}
+  ) { }
 
 
 
   ngOnInit(): void {
     this.initForm();
-  
+    this.products = PRODUCTS;
+
   }
+
+
+
+  getImage(product: Product, size: '400' | '720' | '1440' | 'original'): string {
+    const imagesCount = product.images.length;
+
+    // Wenn nur ein Bild da ist, gib das zurück
+    if (imagesCount === 1) {
+      return product.images[0];
+    }
+
+    // Berechne Blockgröße (Anzahl Bilder pro Größe)
+    const blockSize = this.getBlockSize(product);
+
+    // Basisindex des aktuellen Bildes im Block
+    const baseIndex = product.currentIndex;
+
+    // Berechne Offset je nach Größe
+    const offset =
+      size === '400' ? 0 :
+        size === '720' ? blockSize :
+          size === '1440' ? blockSize * 2 :
+            blockSize * 3;
+
+    // Berechne finalen Index
+    const imageIndex = offset + baseIndex;
+
+    // Falls der Index außerhalb des Arrays liegt, gib das letzte Bild zurück (Fallback)
+    if (imageIndex >= imagesCount) {
+      return product.images[imagesCount - 1];
+    }
+
+    return product.images[imageIndex];
+  }
+
+  getBlockSize(product: Product): number {
+    const imagesCount = product.images.length;
+
+    // Wenn weniger als 4 Bilder, dann gibt es keine Blöcke – blockSize ist 1 (oder Anzahl der Bilder)
+    if (imagesCount < 4) {
+      return 1;
+    }
+
+    // Normalerweise teile Bilder in 4 Blöcke auf
+    return imagesCount / 4;
+  }
+
+
+
+
 
   /* ===========================
      Form
@@ -326,11 +176,11 @@ export class Products {
 
 
   @HostListener('document:keydown.escape')
-closeOnEscape() {
-  if (this.isFullscreenIndex !== null) {
-    this.toggleFullscreen(this.isFullscreenIndex);
+  closeOnEscape() {
+    if (this.isFullscreenIndex !== null) {
+      this.toggleFullscreen(this.isFullscreenIndex);
+    }
   }
-}
 
 
   toggleFullscreen(productIndex: number) {
@@ -347,8 +197,8 @@ closeOnEscape() {
       w >= 1600
         ? this.getImage(product, 'original')
         : w >= 1000
-        ? this.getImage(product, '1440')
-        : this.getImage(product, '720');
+          ? this.getImage(product, '1440')
+          : this.getImage(product, '720');
 
     this.isFullscreenIndex = productIndex;
   }
@@ -394,25 +244,25 @@ closeOnEscape() {
     this.prevLeft(product);
     this.updateFullscreenImage();
   }
-  
+
   nextFullscreen() {
     const product = this.products[this.isFullscreenIndex!];
     this.prevRight(product);
     this.updateFullscreenImage();
   }
-  
+
   updateFullscreenImage() {
     const product = this.products[this.isFullscreenIndex!];
     const w = window.innerWidth;
-  
+
     this.fullscreenImage =
       w >= 1600
         ? this.getImage(product, 'original')
         : w >= 1000
-        ? this.getImage(product, '1440')
-        : this.getImage(product, '720');
+          ? this.getImage(product, '1440')
+          : this.getImage(product, '720');
   }
-  
+
 
 
 

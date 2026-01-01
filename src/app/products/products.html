@@ -6,59 +6,23 @@
     <span class="text">
         <h2><b>Privater Einmalverkauf aus Lagerauflösung</b></h2>
         
-        <h4> Alle angebotenen Heidenhain-Geräte stammen aus meinem privaten Besitz.
+        <h5> Alle angebotenen Heidenhain-Geräte stammen aus meinem privaten Besitz.
             Es handelt sich um Einzelstücke aus einer einmaligen Lagerauflösung.
-            Die Geräte sind gebraucht und wurden geprüft bzw. getestet.</h4>
+            Die Geräte sind gebraucht und wurden geprüft bzw. getestet.</h5>
 
-        <h4>Ich bin Privatverkäufer und stehe in keiner geschäftlichen oder
+        <h5>Ich bin Privatverkäufer und stehe in keiner geschäftlichen oder
             sonstigen Verbindung zur Firma Heidenhain.
             Genannte Markennamen dienen ausschließlich der eindeutigen
-            Identifikation der angebotenen Produkte.</h4>
+            Identifikation der angebotenen Produkte.</h5>
 
-        <h4> Eine <b>freiwillige Rückgabe innerhalb von 14 Tagen</b> wird aus Kulanz angeboten,
+        <h5> Eine <b>freiwillige Rückgabe innerhalb von 14 Tagen</b> wird aus Kulanz angeboten,
             falls ein Artikel nicht wie beschrieben funktioniert.
             Die Rücksendung hat im original versendeten Zustand zu erfolgen.
-            Versandkosten sowie Rückversandkosten trägt der Käufer.</h4>
+            Versandkosten sowie Rückversandkosten trägt der Käufer.</h5>
 
-        <h4>Da es sich um einen privaten Verkauf handelt,
-            erfolgt der Verkauf <b>ohne Rechnung und ohne Ausweis von Mehrwertsteuer</b>.</h4>
+        <h5>Da es sich um einen privaten Verkauf handelt,
+            erfolgt der Verkauf <b>ohne Rechnung und ohne Ausweis von Mehrwertsteuer</b>.</h5>
     </span>
-
-
-
-
-    <!-- <span class="text">
-        <b style="font-size: larger;"> Privater Verkauf aus Lagerauflösung.</b>
-        <br><br>
-        Alle angebotenen Heidenhain-Geräte sind Einzelstücke, getestet und funktionsfähig.
-        <br>
-        Ich bin Privatverkäufer und stehe in keiner Verbindung zur Firma Heidenhain.
-        Markennamen werden nur zur Identifikation der Produkte verwendet.
-        <br>
-        14 Tage Rückgaberecht, Rücksendung im versendeten Zustand.
-        Versandkosten und Rückversand trägt der Käufer.
-        <br>
-        Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit Mehrwertsteuer.
-    </span> -->
-
-    <!-- <span class="text">
-    Privatverkauf - Lagerauflösung
-<br><br>
-Die hier angebotenen Heidenhain-Geräte stammen aus einer privaten Lagerauflösung (Kellerfund).
-Alle Geräte sind nur einmal vorhanden, wurden getestet und sind voll funktionsfähig, sofern nicht anders angegeben.
-<br><br>
-Der Verkauf erfolgt ausschließlich privat.
-Es besteht keine geschäftliche oder sonstige Verbindung zur Firma Heidenhain.
-Alle genannten Marken- und Produktnamen dienen lediglich der Beschreibung der angebotenen Artikel.
-<br><br>
-Rückgabe:
-Ich gewähre eine Rückgabegarantie von 14 Tagen ab Erhalt der Ware.
-Die Rücksendung muss im gleichen Zustand erfolgen, wie die Ware versendet wurde.
-Die Kosten und das Risiko des Rückversands trägt der Käufer.
-<br><br>
-Hinweis:
-Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit Mehrwertsteuer.
-  </span> -->
 
     <button mat-icon-button class="contact-btn" (click)="scrollToFormElement()" aria-label="Kontakt aufnehmen"
         matTooltip="Kontakt">
@@ -68,65 +32,9 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
 
 <main>
 
-
-
-    <!-- @for (product of products; track $index) {
-    <div class="product-wrapper" [class.fullscreen]="isFullscreenIndex === $index">
-        <button mat-icon-button matTooltip="zurück" class="nav left" (click)="prevLeft(product)"
-            aria-label="Vorheriges Produkt">
-            <mat-icon>chevron_left</mat-icon>
-        </button>
-
-
-        <img  [src]="product.images[product.currentIndex]" [alt]="product.title" />
-        
-
-
-        <button matTooltip="nächste" mat-icon-button class="nav right" (click)="prevRight(product)"
-            aria-label="Vorheriges Produkt">
-            <mat-icon>chevron_right</mat-icon>
-        </button>
-
-
-        <div class="counter">
-            {{ product.currentIndex + 1 }} / {{ product.images.length }}
-        </div>
-
-        <button mat-icon-button class="fullscreen-btn" (click)="toggleFullscreen($index)" [matTooltip]="
-    isFullscreenIndex === $index
-      ? 'Vollbild verlassen'
-      : 'Vollbild anzeigen'
-  " [attr.aria-label]="
-    isFullscreenIndex === $index
-      ? 'Vollbild verlassen'
-      : 'Vollbild anzeigen'
-  ">
-            <mat-icon>
-                {{ isFullscreenIndex === $index ? 'fullscreen_exit' : 'fullscreen' }}
-            </mat-icon>
-        </button>
-
-        @if (isFullscreenIndex !== $index) {
-        <button mat-icon-button class="contact" (click)="scrollToForm($index)" aria-label="Kontakt aufnehmen"
-            matTooltip="Kontakt">
-            <mat-icon>mail</mat-icon>
-        </button>
-        }
-
-
-        <h2 class="title">{{ product.title }}</h2>
-    </div>
-    } -->
-
-
     @for (product of products; track $index) {
 
         <div class="product-wrapper">
-        
-          <button mat-icon-button class="nav left"
-                  (click)="prevLeft(product)">
-            <mat-icon>chevron_left</mat-icon>
-          </button>
         
           <img
             [src]="getImage(product, '720')"
@@ -140,11 +48,6 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
             (click)="toggleFullscreen($index)"
           />
         
-          <button mat-icon-button class="nav right"
-                  (click)="prevRight(product)">
-            <mat-icon>chevron_right</mat-icon>
-          </button>
-        
           <div class="counter">
             {{ product.currentIndex + 1 }} /
             {{ getBlockSize(product) }}
@@ -156,8 +59,22 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
               {{ isFullscreenIndex === $index ? 'fullscreen_exit' : 'fullscreen' }}
             </mat-icon>
           </button>
-        
-          <h2 class="title">{{ product.title }}</h2>
+          <div style="position: relative;">
+
+             <button mat-icon-button class="nav left"
+                  (click)="prevLeft(product)">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+
+                <div class="title">{{ product.title }}</div>
+
+                 <button mat-icon-button class="nav right"
+                  (click)="prevRight(product)">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+
+          </div>
+         
 
           @if (isFullscreenIndex !== $index) {
             <button mat-icon-button class="contact" (click)="scrollToForm($index)" aria-label="Kontakt aufnehmen"
@@ -169,36 +86,32 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
         </div>
         }
         
-        <!-- @if (fullscreenImage) {
-          <div class="lightbox" (click)="toggleFullscreen(isFullscreenIndex!)">
-            <img [src]="fullscreenImage"
-                 (click)="$event.stopPropagation()" />
-          </div>
-        } -->
-        
 
         @if (fullscreenImage) {
             <div class="lightbox">
-          
-              <button class="nav left"
+
+              <div style="position: relative;">
+
+                    <button class="fs-nav fs-left"
                       (click)="prevFullscreen()"
                       aria-label="Vorheriges Bild">
                       <mat-icon>chevron_left</mat-icon>
               </button>
           
 
-              <img
-  [src]="fullscreenImage"
-  (click)="toggleFullscreen(isFullscreenIndex!)"
-/>
+              <img [src]="fullscreenImage" (click)="toggleFullscreen(isFullscreenIndex!)"/>
   
           
-              <button class="nav right"
+              <button class="fs-nav fs-right"
                       (click)="nextFullscreen()"
                       aria-label="Nächstes Bild">
                       <mat-icon>chevron_right</mat-icon>
               </button>
           
+
+              </div>
+          
+             
               <div class="fs-counter">
                 {{ products[isFullscreenIndex!].currentIndex + 1 }}
                 /
@@ -218,7 +131,7 @@ Da es sich um einen Privatverkauf handelt, erfolgt der Verkauf ohne Rechnung mit
           
 
 
-
+<!-- *** FORM *** -->
 
 
     <div class="form-wrapper">

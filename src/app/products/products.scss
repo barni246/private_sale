@@ -6,376 +6,394 @@ $transition: 225ms ease-in-out;
 
 
 .text-content {
-    position: relative;
-    padding: 150px 3px 48px 3px;
-    padding-top: clamp(270px, 15vw, 150px);
-    text-align: center;
-  
-    border-left: 32px solid rgba(0, 0, 0, 0.03);
-    border-right: 32px solid rgba(0, 0, 0, 0.03);
-    background-color: $bg-overlay;
-  
-    font-size: clamp(16px, 4vw, 32px);
-    font-weight: 500;
-    line-height: 1.6;
-    color: $primary;
+  position: relative;
+  padding: 150px 3px 48px 3px;
+  padding-top: clamp(270px, 15vw, 150px);
+  text-align: center;
 
-    h2 {
-      font-size: clamp(20px, 6vw, 42px);
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-    }
-  
-    span {
+  border-left: 32px solid rgba(0, 0, 0, 0.03);
+  border-right: 32px solid rgba(0, 0, 0, 0.03);
+  background-color: $bg-overlay;
+
+  font-size: clamp(16px, 4vw, 32px);
+  font-weight: 500;
+  line-height: 1.6;
+  color: $primary;
+
+  h2 {
+    font-size: clamp(20px, 6vw, 42px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  span {
     //  display: inline;
-    }
-  
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 6px;
-  
-      border: 2px solid $primary;
-      border-radius: 50%;
-      background: $primary;
-      color: $accent;
-      cursor: pointer;
-
-      position: absolute;
-      left: 42%;
-      bottom: 1%;
-  
-      animation: pulseScale 1.6s ease-in-out infinite;
-      transition: background-color $transition, color $transition;
-  
-      &:hover {
-        background: $accent;
-        color: $primary;
-      }
-    }
   }
 
-  
-
-
-
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;  
-    width: 100vw;
-    max-width: 100%;
-    box-sizing: border-box;
-  
-    background-color: $bg-overlay;
-    border-left: 32px solid rgba(0, 0, 0, 0.03);
-    border-right: 32px solid rgba(0, 0, 0, 0.03);
-  }
-
-  
-
-
-
-  .product-wrapper {
-    position: relative;
-    width: 480px;
-    height: 480px;
-    margin: 32px;
-    background: black;
-    border-radius: 2px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  
-    display: flex;
-    flex-direction: column;
+  .contact-btn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-  
-    img {
-      width: 73%;
-      height: 73%;
-      object-fit: cover;
-      cursor: zoom-in;
-      transition: transform 0.3s ease;
-  
-      &:hover {
-        transform: scale(1.02);
-      }
-    }
-  
-    .title {
-      color: whitesmoke;
-     text-align: start;
-     padding: 8px;
-      font-size: clamp(13px, 2vw, 22px) !important;
-      box-sizing: border-box;
-      
-    }
-  }
+    margin-left: 6px;
 
-  
-
-
-  .nav {
-   border-radius: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  
-    width: 48px;
-    height: 48px;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
     border: 2px solid $primary;
-    background: transparent;
-    background-color: yellowgreen;
-    color: $primary;
-    cursor: pointer;
-    z-index: 2;
-  
-    transition: all $transition;
-  
-    &:hover {
-      background: $accent;
-    }
-  
-    &.left { left: 10px; }
-    &.right { right: 10px; }
-  }
-  
-  .counter {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-  
-    padding: 10px;
     border-radius: 50%;
     background: $primary;
     color: $accent;
-  
-    font-size: 12px;
-    z-index: 2;
-  }
-
-  
-
-  
-
-
-  .fullscreen-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border-radius: 100%;
-    background: $primary;
-    color: $accent;
-    border: none;
     cursor: pointer;
-    z-index: 2;
-    width: 40px;
-    height: 40px;
-    transition: transform $transition;
-  
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
 
-
-   .contact {
-     position: absolute;
-     bottom: -19px;
-     right: -19px;
-     border: #005cbb 2px solid;
-     border-radius: 2px;
-     background-color: #005cbb;
-     color: chartreuse;
-     cursor: pointer;
-     transition: all 225ms ease-in-out;
-     border-radius: 100%;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     animation: pulseScale 1.6s ease-in-out infinite;
-     transition: background-color 225ms ease-in-out, color 225ms ease-in-out;
-
-     &:hover {
-         background-color: chartreuse;
-         color: #005cbb;
-         transition: all 225ms ease-in-out;
-     }
- }
-
-
-
-
-  .lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.95);
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    z-index: 5000;
-  
-    img {
-      max-width: 95vw;
-      max-height: 95vh;
-      object-fit: contain;
-      cursor: zoom-out;
-    }
-  }
-
-  
-
-
-
-
-
-  .fs-nav {
-   border-radius: 100%;
     position: absolute;
-    bottom: -100px;
-    transform: translateY(-50%);
-  
-    width: 48px;
-    height: 48px;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    border: 2px solid $primary;
-    background: transparent;
-    background-color: yellowgreen;
-    color: $primary;
-    cursor: pointer;
-    z-index: 2;
-  
-    transition: all $transition;
-  
+    left: 42%;
+    bottom: 1%;
+
+    animation: pulseScale 1.6s ease-in-out infinite;
+    transition: background-color $transition, color $transition;
+
     &:hover {
       background: $accent;
+      color: $primary;
     }
+  }
+}
 
+
+
+
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  background-color: $bg-overlay;
+  border-left: 32px solid rgba(0, 0, 0, 0.03);
+  border-right: 32px solid rgba(0, 0, 0, 0.03);
+}
+
+
+
+
+
+.product-wrapper {
+  position: relative;
+  width: 480px;
+  height: 480px;
+  margin: 32px;
+  background: black;
+  border-radius: 2px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
    
+    width: 73%;
+    height: 73%;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  .title {
+    color: whitesmoke;
+    text-align: start;
+    padding: 8px;
+    font-size: clamp(13px, 2vw, 22px) !important;
+    box-sizing: border-box;
+
+  }
+}
+
+
+
+
+.nav {
+  border-radius: 100%;
+  position: absolute;
+ // top: 50%;
+  transform: translateY(-50%);
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid $primary;
+  background: transparent;
+  background-color: yellowgreen;
+  color: $primary;
+  cursor: pointer;
+  z-index: 2;
+
+  transition: all $transition;
+
+  &:hover {
+    background: $accent;
+  }
+
+  &.left {
+    left: 10px !important;
+  }
+
+  &.right {
+    right: 10px;
+  }
+}
+
+.counter {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+
+  padding: 10px;
+  border-radius: 50%;
+  background: $primary;
+  color: $accent;
+
+  font-size: 12px;
+  z-index: 2;
+}
+
+
+
+
+
+
+.fullscreen-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 100%;
+  background: $primary;
+  color: $accent;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  transition: transform $transition;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+
+.contact {
+  position: absolute;
+  bottom: -19px;
+  right: -19px;
+  border: #005cbb 2px solid;
+  border-radius: 2px;
+  background-color: #005cbb;
+  color: chartreuse;
+  cursor: pointer;
+  transition: all 225ms ease-in-out;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulseScale 1.6s ease-in-out infinite;
+  transition: background-color 225ms ease-in-out, color 225ms ease-in-out;
+
+  &:hover {
+    background-color: chartreuse;
+    color: #005cbb;
+    transition: all 225ms ease-in-out;
+  }
+}
+
+.square-fullscreen {
+background-color: red !important;
+}
+
+.normal-fullscreen {
+ // transform: rotate(90deg);
+}
+
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 5000;
+
+  img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    cursor: zoom-out;
+  }
+}
+
+
+
+
+
+
+
+.fs-nav {
+  border-radius: 100%;
+  position: absolute;
+  bottom: -100px;
+  transform: translateY(-50%);
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid $primary;
+  background: transparent;
+  background-color: yellowgreen;
+  color: $primary;
+  cursor: pointer;
+  z-index: 2;
+
+  transition: all $transition;
+
+  &:hover {
+    background: $accent;
   }
 
 
-   .fs-left {
-      left: 12px;
-    }
+}
 
-    .fs-right {
-      right: 12px;
-    }
-  
-  .fs-counter {
-   // position: absolute;
+
+.fs-left {
+  left: 12px;
+}
+
+.fs-right {
+  right: 12px;
+}
+
+.fs-counter {
+  // position: absolute;
   //  bottom: 1rem;
   //  font-size: 1rem;
   //  color: white;
 
-    position: absolute;
-    bottom: 24px;
-    left: 45%;
-    scale: 1.2;
-    padding: 10px;
-    border-radius: 50%;
-    background: $primary;
-    color: $accent;
-  
-    font-size: 12px;
-    z-index: 2;
-  }
-  
-  .fs-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-  
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
+  position: absolute;
+  bottom: 24px;
+  left: 45%;
+  scale: 1.2;
+  padding: 10px;
+  border-radius: 50%;
+  background: $primary;
+  color: $accent;
 
-  
+  font-size: 12px;
+  z-index: 2;
+}
+
+.fs-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
 
 
 
 
-  .form-wrapper {
-    position: relative;
+
+
+.form-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 30px 0 100px;
+
+  .form-wrapper-image {
     width: 100%;
-    margin: 30px 0 100px;
-  
-    .form-wrapper-image {
-       width: 100%;
     max-height: 100%;
-      position: absolute;
-      inset: 0;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.04;
-      filter: brightness(1.5);
-    }
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.04;
+    filter: brightness(1.5);
   }
-  
-  .contact-form {
-    max-width: 450px;
-    margin: 0 auto;
-    padding: 25px;
-  
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-  
-    border: 2px solid $primary;
-    border-radius: 3px;
-    animation: fadeIn 0.4s ease;
-  
-    input,
-    textarea {
-      color: black;
-    }
-  
-    &.disabled {
-      pointer-events: none;
-      opacity: 0.7;
-    }
+}
+
+.contact-form {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 25px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  border: 2px solid $primary;
+  border-radius: 3px;
+  animation: fadeIn 0.4s ease;
+
+  input,
+  textarea {
+    color: black;
   }
 
-  
-
-
-
-
-  @keyframes pulseScale {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.7;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}
 
+
+// ******************ANIMATION***************************
+
+@keyframes pulseScale {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// **************************@MEDIA***************************************
 
 
 @media (min-width: 100px) {
@@ -387,64 +405,206 @@ $transition: 225ms ease-in-out;
     text-align: center;
   }
 
-   .product-wrapper {
+  .product-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
-    margin: 0 ;
-    margin-bottom: 32px ;
+    margin: 0;
+    margin-bottom: 32px;
     background: black;
     border-radius: 2px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       cursor: zoom-in;
       transition: transform 0.3s ease;
-  
+
       &:hover {
         transform: scale(1.02);
       }
     }
-  
-.counter {
-    position: absolute;
-    top: 10px ;
-    bottom: unset;
-    left: 10px;
-    padding: 10px;
-    border-radius: 50%;
-    background: $primary;
-    color: $accent;
-    font-size: 12px;
-    z-index: 2;
-  }
+
+    .counter {
+      position: absolute;
+      top: 10px;
+      bottom: unset;
+      left: 10px;
+      padding: 10px;
+      border-radius: 50%;
+      background: $primary;
+      color: $accent;
+      font-size: 12px;
+      z-index: 2;
+    }
 
   }
-.left  {
-  top: -32px;
+
+  .fs-counter {
+    bottom: -75px;
+  }
+
+  .left {
+    top: -32px;
+  }
+
+  .right {
+    top: -32px;
+  }
+
 }
 
-.right {
-  top: -32px;
+@media (min-width: 480px) {
+
+  .product-wrapper {
+    position: relative;
+    width: 480px;
+    height: 480px;
+    margin: 0;
+    margin-bottom: 32px;
+    background: black;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 73%;
+      height: 73%;
+      object-fit: cover;
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .counter {
+      position: absolute;
+      top: 10px;
+      bottom: unset;
+      left: 10px;
+      padding: 10px;
+      border-radius: 50%;
+      background: $primary;
+      color: $accent;
+      font-size: 12px;
+      z-index: 2;
+    }
+
+  }
+
+  .left {
+    top: -32px;
+  }
+
+  .right {
+    top: -32px;
+   
+  }
+
+  .fs-right {
+ bottom: -12px;
+ right: 8px;
+  }
+
+  .fs-left {
+ bottom: -12px;
+ left: 8px;
+  }
+
+  .fs-counter {
+  position: absolute;
+  bottom: 16px;
+  left: 45%;
+  scale: 1.2;
+  padding: 10px;
+  border-radius: 50%;
+  background: $primary;
+  color: $accent;
+
+  font-size: 12px;
+  z-index: 2;
 }
 
- }
-@media (min-width: 480px) { }
-@media (min-width: 768px) { } 
-@media (min-width: 1024px) {
+
+.fs-fullscreen-btn {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
 
 
- } 
-@media (min-width: 1280px) {
 
 
-  
- } 
+}
+
+@media (min-width: 768px) {
+
+.product-wrapper {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin: 0;
+    margin-bottom: 32px;
+    background: black;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 73%;
+      height: 73%;
+      object-fit: cover;
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .counter {
+      position: absolute;
+      top: 10px;
+      bottom: unset;
+      left: 10px;
+      padding: 10px;
+      border-radius: 50%;
+      background: $primary;
+      color: $accent;
+      font-size: 12px;
+      z-index: 2;
+    }
+
+  }
+
+  .left {
+    top: -32px;
+  }
+
+  .right {
+    top: -32px;
+   
+  }
+
+}
+
+@media (min-width: 1024px) {}
+
+@media (min-width: 1280px) {}

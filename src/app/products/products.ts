@@ -76,6 +76,8 @@ export class Products {
   isLoading = false;
   rateLimitError = '';
   products: Product[] = [];
+  isFullscreenSquare = false;
+
 
   @ViewChild('contactForm') contactForm!: ElementRef<HTMLElement>;
   form!: FormGroup;
@@ -93,6 +95,15 @@ export class Products {
     this.products = PRODUCTS;
 
   }
+private checkFullscreenViewport(): void {
+  this.isFullscreenSquare = window.innerWidth > window.innerHeight;
+  console.log(' window.innerWidth',  window.innerWidth);
+  console.log('window.innerHeight', window.innerHeight);
+  console.log('this.isFullscreenSquare', this.isFullscreenSquare);
+}
+
+
+
 
 
 
@@ -183,25 +194,69 @@ export class Products {
   }
 
 
-  toggleFullscreen(productIndex: number) {
-    if (this.isFullscreenIndex === productIndex) {
-      this.isFullscreenIndex = null;
-      this.fullscreenImage = null;
-      return;
-    }
+  // toggleFullscreen(productIndex: number) {
+  //   if (this.isFullscreenIndex === productIndex) {
+  //     this.isFullscreenIndex = null;
+  //     this.fullscreenImage = null;
+  //     return;
+  //   }
 
-    const product = this.products[productIndex];
-    const w = window.innerWidth;
+  //   const product = this.products[productIndex];
+  //   const w = window.innerWidth;
 
-    this.fullscreenImage =
-      w >= 1600
-        ? this.getImage(product, 'original')
-        : w >= 1000
-          ? this.getImage(product, '1440')
-          : this.getImage(product, '720');
+  //   this.fullscreenImage =
+  //     w >= 1600
+  //       ? this.getImage(product, 'original')
+  //       : w >= 1000
+  //         ? this.getImage(product, '1440')
+  //         : this.getImage(product, '720');
 
-    this.isFullscreenIndex = productIndex;
+  //   this.isFullscreenIndex = productIndex;
+  // }
+
+toggleFullscreen(productIndex: number) {
+  if (this.isFullscreenIndex === productIndex) {
+    this.isFullscreenIndex = null;
+    this.fullscreenImage = null;
+    this.isFullscreenSquare = false; // ⬅️ EXTREM WICHTIG
+    return;
   }
+
+  const product = this.products[productIndex];
+  const w = window.innerWidth;
+
+  this.fullscreenImage =
+    w >= 1600
+      ? this.getImage(product, 'original')
+      : w >= 1000
+        ? this.getImage(product, '1440')
+        : this.getImage(product, '720');
+
+  this.isFullscreenIndex = productIndex;
+  this.logImageSize(this.fullscreenImage);
+  // Test-Logik (Display!)
+  this.isFullscreenSquare = window.innerWidth + 30 > window.innerHeight;
+   console.log(' window.innerWidth',  window.innerWidth);
+  console.log('window.innerHeight', window.innerHeight);
+  console.log('this.isFullscreenSquare', this.isFullscreenSquare);
+
+}
+
+allokep:boolean =false;
+
+private logImageSize(imageUrl: string): void {
+  const img = new Image();
+  img.src = imageUrl;
+
+  img.onload = () => {
+    console.log('Bild ORIGINAL:');
+    console.log('Breite:', img.naturalWidth);
+    console.log('Höhe:', img.naturalHeight);
+    if( img.naturalHeight >img.naturalWidth ) {
+      this.allokep = true;
+    }
+  };
+}
 
 
 

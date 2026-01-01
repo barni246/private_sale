@@ -1,214 +1,208 @@
 <div class="text-content">
 
-    <meta name="description"
-        content="Privater Einmalverkauf gebrauchter Heidenhain Messsysteme (LE 355, LE 415, LE 426, ROD 700) aus Lagerauflösung. Freiwillige Rückgabe innerhalb von 14 Tagen aus Kulanz.">
+  <meta name="description"
+    content="Privater Einmalverkauf gebrauchter Heidenhain Messsysteme (LE 355, LE 415, LE 426, ROD 700) aus Lagerauflösung. Freiwillige Rückgabe innerhalb von 14 Tagen aus Kulanz.">
 
-    <span class="text">
-        <h2><b>Privater Einmalverkauf aus Lagerauflösung</b></h2>
-        
-        <h5> Alle angebotenen Heidenhain-Geräte stammen aus meinem privaten Besitz.
-            Es handelt sich um Einzelstücke aus einer einmaligen Lagerauflösung.
-            Die Geräte sind gebraucht und wurden geprüft bzw. getestet.</h5>
+  <span class="text">
+    <h2><b>Privater Einmalverkauf aus Lagerauflösung</b></h2>
 
-        <h5>Ich bin Privatverkäufer und stehe in keiner geschäftlichen oder
-            sonstigen Verbindung zur Firma Heidenhain.
-            Genannte Markennamen dienen ausschließlich der eindeutigen
-            Identifikation der angebotenen Produkte.</h5>
+    <h5> Alle angebotenen Heidenhain-Geräte stammen aus meinem privaten Besitz.
+      Es handelt sich um Einzelstücke aus einer einmaligen Lagerauflösung.
+      Die Geräte sind gebraucht und wurden geprüft bzw. getestet.</h5>
 
-        <h5> Eine <b>freiwillige Rückgabe innerhalb von 14 Tagen</b> wird aus Kulanz angeboten,
-            falls ein Artikel nicht wie beschrieben funktioniert.
-            Die Rücksendung hat im original versendeten Zustand zu erfolgen.
-            Versandkosten sowie Rückversandkosten trägt der Käufer.</h5>
+    <h5>Ich bin Privatverkäufer und stehe in keiner geschäftlichen oder
+      sonstigen Verbindung zur Firma Heidenhain.
+      Genannte Markennamen dienen ausschließlich der eindeutigen
+      Identifikation der angebotenen Produkte.</h5>
 
-        <h5>Da es sich um einen privaten Verkauf handelt,
-            erfolgt der Verkauf <b>ohne Rechnung und ohne Ausweis von Mehrwertsteuer</b>.</h5>
-    </span>
+    <h5> Eine <b>freiwillige Rückgabe innerhalb von 14 Tagen</b> wird aus Kulanz angeboten,
+      falls ein Artikel nicht wie beschrieben funktioniert.
+      Die Rücksendung hat im original versendeten Zustand zu erfolgen.
+      Versandkosten sowie Rückversandkosten trägt der Käufer.</h5>
 
-    <button mat-icon-button class="contact-btn" (click)="scrollToFormElement()" aria-label="Kontakt aufnehmen"
-        matTooltip="Kontakt">
-        <mat-icon>mail</mat-icon>
-    </button>
+    <h5>Da es sich um einen privaten Verkauf handelt,
+      erfolgt der Verkauf <b>ohne Rechnung und ohne Ausweis von Mehrwertsteuer</b>.</h5>
+  </span>
+
+  <button mat-icon-button class="contact-btn" (click)="scrollToFormElement()" aria-label="Kontakt aufnehmen"
+    matTooltip="Kontakt">
+    <mat-icon>mail</mat-icon>
+  </button>
 </div>
 
 <main>
 
-    @for (product of products; track $index) {
+  @for (product of products; track $index) {
 
-        <div class="product-wrapper">
-        
-          <img
-            [src]="getImage(product, '720')"
-            [attr.srcset]="
+  <div class="product-wrapper">
+
+    <img [src]="getImage(product, '720')" [attr.srcset]="
               getImage(product, '400') + ' 400w, ' +
               getImage(product, '720') + ' 720w, ' +
               getImage(product, '1440') + ' 1440w'
-            "
-            sizes="(max-width: 768px) 90vw, 720px"
-            [alt]="product.title"
-            (click)="toggleFullscreen($index)"
-          />
-        
-          <div class="counter">
-            {{ product.currentIndex + 1 }} /
-            {{ getBlockSize(product) }}
-          </div>
-        
-          <button mat-icon-button class="fullscreen-btn"
-                  (click)="toggleFullscreen($index)">
-            <mat-icon>
-              {{ isFullscreenIndex === $index ? 'fullscreen_exit' : 'fullscreen' }}
-            </mat-icon>
-          </button>
-          <div style="position: relative;">
+            " sizes="(max-width: 768px) 90vw, 720px" [alt]="product.title" (click)="toggleFullscreen($index)" />
 
-             <button mat-icon-button class="nav left"
-                  (click)="prevLeft(product)">
-            <mat-icon>chevron_left</mat-icon>
-          </button>
+    <div class="counter">
+      {{ product.currentIndex + 1 }} /
+      {{ getBlockSize(product) }}
+    </div>
 
-                <div class="title">{{ product.title }}</div>
+    <button mat-icon-button class="fullscreen-btn" (click)="toggleFullscreen($index)">
+      <mat-icon>
+        {{ isFullscreenIndex === $index ? 'fullscreen_exit' : 'fullscreen' }}
+      </mat-icon>
+    </button>
+    <div style="position: relative; width: 100%;">
 
-                 <button mat-icon-button class="nav right"
-                  (click)="prevRight(product)">
-            <mat-icon>chevron_right</mat-icon>
-          </button>
+      <button mat-icon-button class="nav left" (click)="prevLeft(product)">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
 
-          </div>
-         
+      <div class="title">{{ product.title }}</div>
 
-          @if (isFullscreenIndex !== $index) {
-            <button mat-icon-button class="contact" (click)="scrollToForm($index)" aria-label="Kontakt aufnehmen"
-                matTooltip="Kontakt">
-                <mat-icon>mail</mat-icon>
-            </button>
-            }
-        
-        </div>
-        }
-        
+      <button mat-icon-button class="nav right" (click)="prevRight(product)">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
 
-        @if (fullscreenImage) {
-            <div class="lightbox">
-
-              <div style="position: relative;">
-
-                    <button class="fs-nav fs-left"
-                      (click)="prevFullscreen()"
-                      aria-label="Vorheriges Bild">
-                      <mat-icon>chevron_left</mat-icon>
-              </button>
-          
-
-              <img [src]="fullscreenImage" (click)="toggleFullscreen(isFullscreenIndex!)"/>
-  
-          
-              <button class="fs-nav fs-right"
-                      (click)="nextFullscreen()"
-                      aria-label="Nächstes Bild">
-                      <mat-icon>chevron_right</mat-icon>
-              </button>
-          
-
-              </div>
-          
-             
-              <div class="fs-counter">
-                {{ products[isFullscreenIndex!].currentIndex + 1 }}
-                /
-                {{ getBlockSize(products[isFullscreenIndex!]) }}
-              </div>
-          
-              <button  class="fullscreen-btn"
-                      (click)="toggleFullscreen(isFullscreenIndex!)">
-                      <mat-icon>
-                        fullscreen
-                      </mat-icon>
-              </button>
-              
-          
-            </div>
-          }
-          
+    </div>
 
 
-<!-- *** FORM *** -->
+    @if (isFullscreenIndex !== $index) {
+    <button mat-icon-button class="contact" (click)="scrollToForm($index)" aria-label="Kontakt aufnehmen"
+      matTooltip="Kontakt">
+      <mat-icon>mail</mat-icon>
+    </button>
+    }
+
+  </div>
+  }
 
 
-    <div class="form-wrapper">
+  @if (fullscreenImage) {
+  <div class="lightbox" [ngClass]="{
+       'square-fullscreen': isFullscreenSquare,
+       'normal-fullscreen': allokep
+     }">
+
+    <div style="position: relative;">
+
+       <button class="fs-fullscreen-btn" (click)="toggleFullscreen(isFullscreenIndex!)">
+      <mat-icon>
+        fullscreen
+      </mat-icon>
+    </button>
+
+<!-- 
+      <button mat-icon-button class="fs-fullscreen-btn">
+      <mat-icon> fullscreen</mat-icon>
+    </button> -->
+
+      <button class="fs-nav fs-left" (click)="prevFullscreen()" aria-label="Vorheriges Bild">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
 
 
-        <img class="form-wrapper-image" src="/img/le415b/le415b-4-1440.jpg" alt="">
-
-        <form #formDirective="ngForm" #contactForm [formGroup]="form" (ngSubmit)="sendMessage(formDirective)"
-            class="contact-form" [class.disabled]="isLoading">
+      <img [src]="fullscreenImage" (click)="toggleFullscreen(isFullscreenIndex!)" />
 
 
-            <!-- NAME -->
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Name</mat-label>
-                <input matInput type="text" formControlName="name">
+      <button class="fs-nav fs-right" (click)="nextFullscreen()" aria-label="Nächstes Bild">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
 
-                @if (name?.touched && name?.invalid) {
-                <mat-error>Name ist erforderlich (min. 2 Zeichen).</mat-error>
-                }
-            </mat-form-field>
-
-            <!-- EMAIL -->
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Email</mat-label>
-                <input matInput type="email" formControlName="email" style="position: relative;">
-                <div style="position: absolute; bottom: -24px; left: 0; font-size: 11px; display: flex;">
-
-
-
-
-                    @if (email?.touched && email?.errors) {
-                    @if (email?.errors?.['required']) {
-                    <mat-error>Email ist erforderlich.</mat-error>
-                    }
-
-                    @if (email?.errors?.['email']) {
-                    <mat-error>Keine gültige E-Mail-Adresse.</mat-error>
-                    }
-
-                    @if (email?.errors?.['pattern']) {
-                    <mat-error>Bitte ein korrektes E-Mail-Format verwenden.</mat-error>
-                    }
-                    }
-                </div>
-
-            </mat-form-field>
-
-            <!-- MESSAGE -->
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Nachricht</mat-label>
-                <textarea matInput rows="5" formControlName="message"></textarea>
-
-                @if (message?.touched && message?.invalid) {
-                <mat-error>Nachricht ist erforderlich (min. 10 Zeichen).</mat-error>
-                }
-            </mat-form-field>
-
-            <!-- RATE LIMIT -->
-            @if (rateLimitError) {
-            <div class="rate-error">{{ rateLimitError }}</div>
-            }
-
-            <!-- Ladebalken -->
-            @if (isLoading) {
-            <mat-progress-bar mode="indeterminate" color="primary" style="margin-bottom: 12px;"></mat-progress-bar>
-            }
-
-
-            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || isLoading">
-                {{ isLoading ? 'Wird gesendet...' : 'Senden' }}
-            </button>
-
-
-        </form>
+       <div class="fs-counter">
+      {{ products[isFullscreenIndex!].currentIndex + 1 }}
+      /
+      {{ getBlockSize(products[isFullscreenIndex!]) }}
+    </div>
 
 
     </div>
+
+   
+
+  </div>
+  }
+
+
+
+  <!-- *** FORM *** -->
+
+
+  <div class="form-wrapper">
+
+
+    <img class="form-wrapper-image" src="/img/le415b/le415b-4-1440.jpg" alt="">
+
+    <form #formDirective="ngForm" #contactForm [formGroup]="form" (ngSubmit)="sendMessage(formDirective)"
+      class="contact-form" [class.disabled]="isLoading">
+
+
+      <!-- NAME -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name">
+
+        @if (name?.touched && name?.invalid) {
+        <mat-error>Name ist erforderlich (min. 2 Zeichen).</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- EMAIL -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" style="position: relative;">
+        <div style="position: absolute; bottom: -24px; left: 0; font-size: 11px; display: flex;">
+
+
+
+
+          @if (email?.touched && email?.errors) {
+          @if (email?.errors?.['required']) {
+          <mat-error>Email ist erforderlich.</mat-error>
+          }
+
+          @if (email?.errors?.['email']) {
+          <mat-error>Keine gültige E-Mail-Adresse.</mat-error>
+          }
+
+          @if (email?.errors?.['pattern']) {
+          <mat-error>Bitte ein korrektes E-Mail-Format verwenden.</mat-error>
+          }
+          }
+        </div>
+
+      </mat-form-field>
+
+      <!-- MESSAGE -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nachricht</mat-label>
+        <textarea matInput rows="5" formControlName="message"></textarea>
+
+        @if (message?.touched && message?.invalid) {
+        <mat-error>Nachricht ist erforderlich (min. 10 Zeichen).</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- RATE LIMIT -->
+      @if (rateLimitError) {
+      <div class="rate-error">{{ rateLimitError }}</div>
+      }
+
+      <!-- Ladebalken -->
+      @if (isLoading) {
+      <mat-progress-bar mode="indeterminate" color="primary" style="margin-bottom: 12px;"></mat-progress-bar>
+      }
+
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || isLoading">
+        {{ isLoading ? 'Wird gesendet...' : 'Senden' }}
+      </button>
+
+
+    </form>
+
+
+  </div>
 
 
 </main>

@@ -35,6 +35,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { PRODUCTS } from './products.data';
+import { Meta, Title } from '@angular/platform-browser';
 
 interface Product {
   title: string;
@@ -86,6 +87,7 @@ export class Products {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
+    private titleService: Title, private metaService: Meta
   ) { }
 
 
@@ -93,6 +95,12 @@ export class Products {
   ngOnInit(): void {
     this.initForm();
     this.products = PRODUCTS;
+     this.titleService.setTitle('Heidenhain Geräte kaufen - LE 355, LE 355B, LE 415B, LE 415, UV 105, ROD 700 & 850 | barnabas-gonda.de');
+
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Heidenhain Geräte kaufen - LE 355, LE 355B, LE 415B, LE 415, UV 105, ROD 700 & 850 | barnabas-gonda.de'
+    });
 
   }
 private checkFullscreenViewport(): void {

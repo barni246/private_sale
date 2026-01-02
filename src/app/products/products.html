@@ -22,13 +22,14 @@
 
     <h5>Da es sich um einen privaten Verkauf handelt,
       erfolgt der Verkauf <b>ohne Rechnung und ohne Ausweis von Mehrwertsteuer</b>.
-    <button mat-icon-button class="contact-btn" (click)="scrollToFormElement()" aria-label="Kontakt aufnehmen"
-    matTooltip="Kontakt">
-    <mat-icon>mail</mat-icon>
-  </button></h5>
+      <button mat-icon-button class="contact-btn" (click)="scrollToFormElement()" aria-label="Kontakt aufnehmen"
+        matTooltip="Kontakt">
+        <mat-icon>mail</mat-icon>
+      </button>
+    </h5>
   </span>
 
-  
+
 </div>
 
 <main>
@@ -87,16 +88,11 @@
 
     <div style="position: relative;">
 
-       <button class="fs-fullscreen-btn" (click)="toggleFullscreen(isFullscreenIndex!)">
-      <mat-icon>
-        fullscreen
-      </mat-icon>
-    </button>
-
-<!-- 
-      <button mat-icon-button class="fs-fullscreen-btn">
-      <mat-icon> fullscreen</mat-icon>
-    </button> -->
+      <button class="fs-fullscreen-btn" (click)="toggleFullscreen(isFullscreenIndex!)">
+        <mat-icon>
+          fullscreen
+        </mat-icon>
+      </button>
 
       <button class="fs-nav fs-left" (click)="prevFullscreen()" aria-label="Vorheriges Bild">
         <mat-icon>chevron_left</mat-icon>
@@ -110,16 +106,16 @@
         <mat-icon>chevron_right</mat-icon>
       </button>
 
-       <div class="fs-counter">
-      {{ products[isFullscreenIndex!].currentIndex + 1 }}
-      /
-      {{ getBlockSize(products[isFullscreenIndex!]) }}
-    </div>
+      <div class="fs-counter">
+        {{ products[isFullscreenIndex!].currentIndex + 1 }}
+        /
+        {{ getBlockSize(products[isFullscreenIndex!]) }}
+      </div>
 
 
     </div>
 
-   
+
 
   </div>
   }

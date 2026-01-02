@@ -7,7 +7,7 @@ export interface Product {
 
 export const PRODUCTS: Product[] = [
     {
-        title: 'Heidenhain ROD 850 36000 Drehgeber, überholt und getestet. Der Preis ist 1450,00€',
+        title: 'Heidenhain ROD 850 36000 Drehgeber, überholt und getestet.',
         images: [
             '/img/rod850/rod850-1-400.jpg',
             '/img/rod850/rod850-2-400.jpg',
@@ -36,7 +36,7 @@ export const PRODUCTS: Product[] = [
         currentIndex: 0
     },
     {
-        title: 'Heidenhain LE 415B Steuerung, überholt und getestet. Der Preis ist 1450,00€',
+        title: 'Heidenhain LE 415B Steuerung, überholt und getestet.',
         images: [
             '/img/le415b/le415b-1-400.jpg',
             '/img/le415b/le415b-2-400.jpg',

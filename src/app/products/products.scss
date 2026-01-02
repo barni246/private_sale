@@ -15,7 +15,7 @@ $transition: 225ms ease-in-out;
   border-right: 32px solid rgba(0, 0, 0, 0.03);
   background-color: $bg-overlay;
 
-  font-size: clamp(16px, 3vw, 32px);
+  font-size: clamp(18px, 3vw, 32px);
   font-weight: 500;
   line-height: 1.6;
   color: $primary;
@@ -117,7 +117,7 @@ main {
     
     color: whitesmoke;
     padding: 8px;
-    font-size: clamp(13px, 1.5vw, 18px) !important;
+    font-size: clamp(14px, 1.5vw, 18px) !important;
     box-sizing: border-box;
 
   }
@@ -218,6 +218,7 @@ main {
   align-items: center;
   animation: pulseScale 1.6s ease-in-out infinite;
   transition: background-color 225ms ease-in-out, color 225ms ease-in-out;
+  transition: all 225ms ease-in-out;
 
   &:hover {
     background-color: chartreuse;
@@ -227,7 +228,7 @@ main {
 }
 
 .square-fullscreen {
-background-color: red !important;
+ // background-color: red !important;
 }
 
 .normal-fullscreen {

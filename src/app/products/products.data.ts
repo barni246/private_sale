@@ -2,16 +2,18 @@ export interface Product {
     title: string;
     images: string[];
     currentIndex: number;
+    price:string
 }
 
 
 export const PRODUCTS: Product[] = [
     {
         title: 'Heidenhain ROD 850 36000 Drehgeber, überholt und getestet.',
+        price: ' 1799,00 € (inkl. 14 Tage Rückgaberecht)',
         images: [
             './img/rod850/rod850-1-400.jpg',
             './img/rod850/rod850-2-400.jpg',
-            '.img/rod850/rod850-3-400.jpg',
+            './img/rod850/rod850-3-400.jpg',
             './img/rod850/rod850-4-400.jpg',
             './img/rod850/rod850-5-400.jpg',
 
@@ -37,6 +39,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         title: 'Heidenhain LE 415B Steuerung, überholt und getestet.',
+         price: ' 1350,00 € (inkl. 14 Tage Rückgaberecht)',
         images: [
             './img/le415b/le415b-1-400.jpg',
             './img/le415b/le415b-2-400.jpg',
@@ -74,6 +77,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         title: 'Heidenhain Stromversorgung UV 105 , überholt und getestet.',
+         price: ' 999,00 € (inkl. 14 Tage Rückgaberecht)',
         images: [
             './img/uv105/uv105-1-400.jpg',
             './img/uv105/uv105-2-400.jpg',
@@ -99,6 +103,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         title: 'Heidenhain LE 355B Bahnsteuerung, überholt und getestet.',
+         price: ' 999,00 € (inkl. 14 Tage Rückgaberecht)',
         images: [
             './img/le355b/le355b-1-400.jpg',
             './img/le355b/le355b-2-400.jpg',
@@ -137,6 +142,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         title: 'Heidenhain Drehgeber ROD 700 3M Kabel, überholt und getestet.',
+         price: ' 1250,00 € (inkl. 14 Tage Rückgaberecht)',
         images: [
             './img/rod700/rod700-1-400.jpg',
             './img/rod700/rod700-2-400.jpg',
@@ -157,7 +163,8 @@ export const PRODUCTS: Product[] = [
         currentIndex: 0
     },
     {
-        title: 'Heidenhain LE 426PB Steuerung, überholt und getestet.(Fotos kommen noch!)',
+        title: 'Heidenhain LE 426PB Steuerung, überholt und getestet.',
+         price: ' 1999,00 € (inkl. 14 Tage Rückgaberecht)',
         images: ['./img/le426pb/le426pb-1-400.jpg'],
         currentIndex: 0
     }

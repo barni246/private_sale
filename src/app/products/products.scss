@@ -15,7 +15,7 @@ $transition: 225ms ease-in-out;
   border-right: 32px solid rgba(0, 0, 0, 0.03);
   background-color: $bg-overlay;
 
-  font-size: clamp(18px, 3vw, 32px);
+  font-size: clamp(18px, 3vw, 28px);
   font-weight: 500;
   line-height: 1.6;
   color: $primary;
@@ -41,7 +41,7 @@ $transition: 225ms ease-in-out;
     cursor: pointer;
     align-self: center;
 
-    animation: pulseScale 1.6s ease-in-out infinite;
+    animation: pulseScaleContactBtn 1.6s ease-in-out infinite;
     transition: background-color $transition, color $transition;
 
     &:hover {
@@ -58,12 +58,9 @@ $transition: 225ms ease-in-out;
 }
 
 
-.text-content {
-  
-}
+.text-content {}
 
-.contact-btn {
-}
+.contact-btn {}
 
 
 
@@ -101,7 +98,7 @@ main {
   justify-content: center;
 
   img {
-   
+
     width: 73%;
     height: 73%;
     object-fit: cover;
@@ -114,13 +111,21 @@ main {
   }
 
   .title {
-    
-    color: whitesmoke;
-    padding: 8px;
-    font-size: clamp(14px, 1.5vw, 18px) !important;
-    box-sizing: border-box;
 
+    color: whitesmoke;
+    padding: 16px 16px 8px 16px;
+    font-size: clamp(13px, 1.5vw, 16px) !important;
+    box-sizing: border-box;
+    padding-bottom: 0;
   }
+
+  .price {
+    color: whitesmoke;
+    padding: 16px 16px 8px 16px;
+    font-size: clamp(12px, 1.5vw, 15px) !important;
+    box-sizing: border-box;
+  }
+
 }
 
 
@@ -129,7 +134,7 @@ main {
 .nav {
   border-radius: 100%;
   position: absolute;
- // top: 50%;
+  // top: 50%;
   transform: translateY(-50%);
 
   width: 48px;
@@ -178,10 +183,6 @@ main {
 }
 
 
-
-
-
-
 .fullscreen-btn {
   position: absolute;
   top: 10px;
@@ -206,19 +207,16 @@ main {
   position: absolute;
   bottom: -19px;
   right: -19px;
-  border: #005cbb 2px solid;
-  border-radius: 2px;
+  border: 2px solid #005cbb;
+  border-radius: 100%;
   background-color: #005cbb;
   color: chartreuse;
   cursor: pointer;
-  transition: all 225ms ease-in-out;
-  border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: pulseScale 1.6s ease-in-out infinite;
-  transition: background-color 225ms ease-in-out, color 225ms ease-in-out;
   transition: all 225ms ease-in-out;
+  animation: pulseScaleContact 1.6s ease-in-out infinite;
 
   &:hover {
     background-color: chartreuse;
@@ -227,12 +225,13 @@ main {
   }
 }
 
+
 .square-fullscreen {
- // background-color: red !important;
+  // background-color: red !important;
 }
 
 .normal-fullscreen {
- // transform: rotate(90deg);
+  // transform: rotate(90deg);
 }
 
 
@@ -254,10 +253,6 @@ main {
     cursor: zoom-out;
   }
 }
-
-
-
-
 
 
 
@@ -300,10 +295,6 @@ main {
 }
 
 .fs-counter {
-  // position: absolute;
-  //  bottom: 1rem;
-  //  font-size: 1rem;
-  //  color: white;
 
   position: absolute;
   bottom: 24px;
@@ -329,10 +320,6 @@ main {
   color: white;
   cursor: pointer;
 }
-
-
-
-
 
 
 .form-wrapper {
@@ -379,19 +366,37 @@ main {
 
 // ******************ANIMATION***************************
 
-@keyframes pulseScale {
+
+
+@keyframes pulseScaleContactBtn {
 
   0%,
   100% {
     transform: scale(1);
-    border: 1px solid $accent ;
+    box-shadow: 0 0 0 0 rgba(0, 92, 187, 0.7);
   }
 
   50% {
     transform: scale(1.1);
-    border: 1px solid transparent ;
+    box-shadow: 0 0 10px 6px rgba(0, 92, 187, 0);
   }
 }
+
+
+@keyframes pulseScaleContact {
+
+  0%,
+  100% {
+    transform: scale(1);
+    border: 1px solid chartreuse;
+  }
+
+  50% {
+    transform: scale(1.1);
+    border: 1px solid transparent;
+  }
+}
+
 
 @keyframes fadeIn {
   from {
@@ -442,16 +447,17 @@ main {
       &:hover {
         transform: scale(1.02);
       }
-.title {
-      
-      width: 80%;
-      display: flex;
-      justify-content: center;
-    }
+
+      .title {
+
+        width: 80%;
+        display: flex;
+        justify-content: center;
+      }
 
     }
 
-    
+
 
     .counter {
       position: absolute;
@@ -468,23 +474,23 @@ main {
 
   }
 
-  .fs-fullscreen-btn{
-       position: absolute;
-        right: 8px;
-        top: 8px;
-        border-radius: 100%;
-  background: $primary;
-  color: $accent;
-  border: none;
-  cursor: pointer;
-  z-index: 2;
-  width: 40px;
-  height: 40px;
-  transition: transform $transition;
+  .fs-fullscreen-btn {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    border-radius: 100%;
+    background: $primary;
+    color: $accent;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    transition: transform $transition;
 
-  &:hover {
-    transform: scale(1.2);
-  }
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   .fs-counter {
@@ -554,51 +560,51 @@ main {
 
   .right {
     top: -32px;
-   
+
   }
 
   .fs-right {
- bottom: -12px;
- right: 8px;
+    bottom: -12px;
+    right: 8px;
   }
 
   .fs-left {
- bottom: -12px;
- left: 8px;
+    bottom: -12px;
+    left: 8px;
   }
 
   .fs-counter {
-  position: absolute;
-  bottom: 16px;
-  left: 45%;
-  scale: 1.2;
-  padding: 10px;
-  border-radius: 50%;
-  background: $primary;
-  color: $accent;
+    position: absolute;
+    bottom: 16px;
+    left: 45%;
+    scale: 1.2;
+    padding: 10px;
+    border-radius: 50%;
+    background: $primary;
+    color: $accent;
 
-  font-size: 12px;
-  z-index: 2;
-}
+    font-size: 12px;
+    z-index: 2;
+  }
 
 
-.fs-fullscreen-btn {
-  position: absolute;
-  right: 8px;
-  top: 8px;
-}
+  .fs-fullscreen-btn {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+  }
 
 
 }
 
 @media (min-width: 768px) {
 
-.product-wrapper {
+  .product-wrapper {
     position: relative;
     width: 320px;
-    height: 320px;
+    height: 390px;
     margin: 0;
-    margin-bottom: 32px;
+    margin:0px 5px 32px 5px;
     background: black;
     border-radius: 2px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -610,7 +616,7 @@ main {
 
     img {
       width: 73%;
-      height: 73%;
+      height: 60%;
       object-fit: cover;
       cursor: zoom-in;
       transition: transform 0.3s ease;
@@ -622,7 +628,7 @@ main {
 
     .counter {
       position: absolute;
-      top: 24px;
+      top: 5px;
       bottom: unset;
       left: 5px;
       padding: 6px;
@@ -639,38 +645,41 @@ main {
     width: 35px;
     height: 35px;
 
-    
+
   }
 
-.left {
- left: 4px !important;
-}
-  
+  .left {
+    left: 4px !important;
+  }
+
 
   .right {
-   right: 4px !important;
+    right: 4px !important;
   }
 
-.fs-fullscreen-btn {
-  padding: 8px;
+  .fs-fullscreen-btn {
+    padding: 8px;
 
+  }
+
+  .fullscreen-btn {
+    width: 32px;
+    height: 32px;
+    top: 5px;
+    right: 5px;
+    padding: 4px;
+  }
+
+
+
+  .contact {
+    width: 36px;
+    height: 36px;
+    bottom: 2px;
+    right: 2px;
+  }
 }
-.fullscreen-btn {
-  width: 32px;
-  height: 32px;
-  top: 24px;
-  right: 5px;
-  padding: 4px;
-}
 
-
-
-.contact {
-  width: 36px;
-  height: 36px;
-  bottom: 2px;
-  right: 2px;}
-}
 @media (min-width: 1024px) {}
 
 @media (min-width: 1280px) {}

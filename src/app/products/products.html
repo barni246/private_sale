@@ -61,6 +61,7 @@
       </button>
 
       <div class="title">{{ product.title }}</div>
+      <div class="price">Preis:{{  product.price }}</div>
 
       <button mat-icon-button class="nav right" (click)="prevRight(product)">
         <mat-icon>chevron_right</mat-icon>
@@ -173,7 +174,7 @@
       <!-- MESSAGE -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Nachricht</mat-label>
-        <textarea matInput rows="5" formControlName="message"></textarea>
+        <textarea matInput rows="10" formControlName="message"></textarea>
 
         @if (message?.touched && message?.invalid) {
         <mat-error>Nachricht ist erforderlich (min. 10 Zeichen).</mat-error>
@@ -203,3 +204,7 @@
 
 
 </main>
+
+
+
+<!-- ng build private_sale --configuration production --base-href /heidenhain/ -->

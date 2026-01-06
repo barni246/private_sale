@@ -41,6 +41,7 @@ interface Product {
   title: string;
   images: string[];
   currentIndex: number;
+  price:string
 }
 
 @Component({
@@ -103,15 +104,6 @@ export class Products {
     });
 
   }
-private checkFullscreenViewport(): void {
-  this.isFullscreenSquare = window.innerWidth > window.innerHeight;
-  console.log(' window.innerWidth',  window.innerWidth);
-  console.log('window.innerHeight', window.innerHeight);
-  console.log('this.isFullscreenSquare', this.isFullscreenSquare);
-}
-
-
-
 
 
 
@@ -160,12 +152,6 @@ private checkFullscreenViewport(): void {
   }
 
 
-
-
-
-  /* ===========================
-     Form
-  =========================== */
   private initForm(): void {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -185,13 +171,6 @@ private checkFullscreenViewport(): void {
   get email() { return this.form.get('email'); }
   get message() { return this.form.get('message'); }
 
-  /* ===========================
-     UI Actions
-  =========================== */
-  // toggleFullscreen(index: number): void {
-  //   this.isFullscreenIndex =
-  //     this.isFullscreenIndex === index ? null : index;
-  // }
 
 
   @HostListener('document:keydown.escape')
@@ -202,25 +181,6 @@ private checkFullscreenViewport(): void {
   }
 
 
-  // toggleFullscreen(productIndex: number) {
-  //   if (this.isFullscreenIndex === productIndex) {
-  //     this.isFullscreenIndex = null;
-  //     this.fullscreenImage = null;
-  //     return;
-  //   }
-
-  //   const product = this.products[productIndex];
-  //   const w = window.innerWidth;
-
-  //   this.fullscreenImage =
-  //     w >= 1600
-  //       ? this.getImage(product, 'original')
-  //       : w >= 1000
-  //         ? this.getImage(product, '1440')
-  //         : this.getImage(product, '720');
-
-  //   this.isFullscreenIndex = productIndex;
-  // }
 
 toggleFullscreen(productIndex: number) {
   if (this.isFullscreenIndex === productIndex) {
@@ -244,9 +204,9 @@ toggleFullscreen(productIndex: number) {
   this.logImageSize(this.fullscreenImage);
   // Test-Logik (Display!)
   this.isFullscreenSquare = window.innerWidth + 30 > window.innerHeight;
-   console.log(' window.innerWidth',  window.innerWidth);
-  console.log('window.innerHeight', window.innerHeight);
-  console.log('this.isFullscreenSquare', this.isFullscreenSquare);
+  //  console.log(' window.innerWidth',  window.innerWidth);
+  // console.log('window.innerHeight', window.innerHeight);
+  // console.log('this.isFullscreenSquare', this.isFullscreenSquare);
 
 }
 
@@ -257,35 +217,15 @@ private logImageSize(imageUrl: string): void {
   img.src = imageUrl;
 
   img.onload = () => {
-    console.log('Bild ORIGINAL:');
-    console.log('Breite:', img.naturalWidth);
-    console.log('Höhe:', img.naturalHeight);
+    // console.log('Bild ORIGINAL:');
+    // console.log('Breite:', img.naturalWidth);
+    // console.log('Höhe:', img.naturalHeight);
     if( img.naturalHeight >img.naturalWidth ) {
       this.allokep = true;
     }
   };
 }
 
-
-
-
-
-  next(product: Product): void {
-    product.currentIndex =
-      (product.currentIndex + 1) % product.images.length;
-  }
-
-  // prevRight(product: Product): void {
-  //   product.currentIndex =
-  //     (product.currentIndex + 1 + product.images.length) %
-  //     product.images.length;
-  // }
-
-  // prevLeft(product: Product): void {
-  //   product.currentIndex =
-  //     (product.currentIndex - 1 + product.images.length) %
-  //     product.images.length;
-  // }
 
 
   prevLeft(product: Product) {
@@ -328,15 +268,11 @@ private logImageSize(imageUrl: string): void {
 
 
 
-
-
-
-
   scrollToForm(index: number): void {
     const title = this.products[index].title;
-
+    const price = this.products[index].price;
     this.form.patchValue({
-      message: `Betreff: ${title}\n\n`
+      message: `Betreff: ${title}\nPreis:${price}\n`
     });
 
     setTimeout(() => this.focusMessageField(), 300);
@@ -344,9 +280,6 @@ private logImageSize(imageUrl: string): void {
   }
 
 
-  /* ===========================
-     Submit / HTTP
-  =========================== */
   sendMessage(formDirective: FormGroupDirective): void {
     this.rateLimitError = '';
 
@@ -374,9 +307,7 @@ private logImageSize(imageUrl: string): void {
       });
   }
 
-  /* ===========================
-     Helpers
-  =========================== */
+ 
   private focusMessageField(): void {
     const textarea = document.querySelector(
       'textarea[formControlName="message"]'
@@ -402,9 +333,7 @@ private logImageSize(imageUrl: string): void {
     window.scrollTo({ top: y, behavior: 'smooth' });
   }
 
-  /* ===========================
-     Rate Limit (Frontend)
-  =========================== */
+ 
   private checkRateLimit(): boolean {
     const raw = localStorage.getItem(this.storageKey);
     if (!raw) return true;
@@ -429,3 +358,6 @@ private logImageSize(imageUrl: string): void {
     localStorage.setItem(this.storageKey, JSON.stringify(timestamps));
   }
 }
+
+
+//  ng build private_sale --configuration production --base-href /heidenhain/ 

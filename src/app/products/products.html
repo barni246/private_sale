@@ -136,9 +136,9 @@
 
 
       <!-- NAME -->
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Name</mat-label>
-        <input matInput type="text" formControlName="name">
+      <mat-form-field appearance="outline"  class="full-width">
+        <mat-label for="nameInput">Name</mat-label>
+        <input matInput id="nameInput" name="nameInput" type="text" formControlName="name">
 
         @if (name?.touched && name?.invalid) {
         <mat-error>Name ist erforderlich (min. 2 Zeichen).</mat-error>
@@ -146,9 +146,9 @@
       </mat-form-field>
 
       <!-- EMAIL -->
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" formControlName="email" style="position: relative;">
+      <mat-form-field appearance="outline"class="full-width">
+        <mat-label for="emailInput">Email</mat-label>
+        <input matInput type="email" formControlName="email"  name="emailInput" id="emailInput"  style="position: relative;">
         <div style="position: absolute; bottom: -24px; left: 0; font-size: 11px; display: flex;">
 
 
@@ -172,9 +172,9 @@
       </mat-form-field>
 
       <!-- MESSAGE -->
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Nachricht</mat-label>
-        <textarea matInput rows="10" formControlName="message"></textarea>
+      <mat-form-field appearance="outline"   class="full-width">
+        <mat-label form="textInput" >Nachricht</mat-label>
+        <textarea matInput rows="10" formControlName="message" name="textInput" id="textInput"></textarea>
 
         @if (message?.touched && message?.invalid) {
         <mat-error>Nachricht ist erforderlich (min. 10 Zeichen).</mat-error>

@@ -2,7 +2,7 @@
 /* ===========================
    Angular / Core
 =========================== */
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 /* ===========================
@@ -88,7 +88,8 @@ export class Products {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private titleService: Title, private metaService: Meta
+    private titleService: Title, private metaService: Meta,
+    private renderer: Renderer2
   ) { }
 
 
@@ -96,12 +97,25 @@ export class Products {
   ngOnInit(): void {
     this.initForm();
     this.products = PRODUCTS;
-     this.titleService.setTitle('Heidenhain Geräte kaufen - LE 355, LE 355B, LE 415B, LE 415, UV 105, ROD 700 & 850 | barnabas-gonda.de');
+     this.titleService.setTitle('Heidenhain Geräte kaufen - TNC, LE 355, LE 355B, LE 415B, LE 415, UV 105 Stromversorgung Netzteil, ROD 700 & 850 | barnabas-gonda.de');
 
     this.metaService.updateTag({
       name: 'description',
-      content: 'Heidenhain Geräte kaufen - LE 355, LE 355B, LE 415B, LE 415, UV 105, ROD 700 & 850 | barnabas-gonda.de'
+      content: 'Heidenhain Geräte kaufen - TNC, LE 355, LE 355B, LE 415B, LE 415, UV 105 Stromversorgung Netzteil, ROD 700 & 850 | barnabas-gonda.de'
     });
+
+     const script = this.renderer.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = `
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Barnabas Gonda Lagerauflösung",
+      "url": "https://barnabas-gonda.de/heidenhain/",
+      "logo": "https://barnabas-gonda.de/heidenhain/img/lager.png"
+    }
+    `;
+    this.renderer.appendChild(document.head, script);
 
   }
 
@@ -361,3 +375,6 @@ private logImageSize(imageUrl: string): void {
 
 
 //  ng build private_sale --configuration production --base-href /heidenhain/ 
+
+
+

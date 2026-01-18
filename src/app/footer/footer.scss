@@ -13,6 +13,8 @@ footer {
     box-sizing: border-box;
      border-left: 32px rgba(0, 0, 0, 0.05) solid;
   border-right: 32px rgba(0, 0, 0, 0.05) solid;
+  z-index: 1000;
+ 
 }
 
 .app-footer {

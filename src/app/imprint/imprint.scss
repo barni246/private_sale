@@ -1,6 +1,10 @@
 .imprint {
-    padding-top: 150px;
+    padding-top: 180px;
     padding-left: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
     box-sizing: border-box;
     background-color: rgb(221, 221, 221);
    height: calc(100vh - 80px);
@@ -38,11 +42,11 @@
 }
 
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 900px) {
 
     .imprint {
-       // padding-top: 80px !important;
-        // height: calc(100vh - 280px);
+        flex-wrap: wrap;
+      
            p {
         font-size: 12px !important;
     }
@@ -52,5 +56,7 @@
   
    }
 }
+
+
 
 

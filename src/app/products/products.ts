@@ -97,11 +97,11 @@ export class Products {
   ngOnInit(): void {
     this.initForm();
     this.products = PRODUCTS;
-     this.titleService.setTitle('Heidenhain Geräte kaufen - TNC, LE 355, LE 355B, LE 415B, LE 415, UV 105 Stromversorgung Netzteil, ROD 700 & 850 | barnabas-gonda.de');
+     this.titleService.setTitle('Heidenhain Geräte kaufen - TNC, überholte Logikeinheit, LE 355, LE 355B, LE 415B, LE 415, UV 105 Stromversorgung Netzteil, ROD 700 & 850 | barnabas-gonda.de');
 
     this.metaService.updateTag({
       name: 'description',
-      content: 'Heidenhain Geräte kaufen - TNC, LE 355, LE 355B, LE 415B, LE 415, UV 105 Stromversorgung Netzteil, ROD 700 & 850 | barnabas-gonda.de'
+      content: 'Heidenhain Geräte kaufen - TNC, überholte Logikeinheit, LE 355, LE 355B, LE 415B, LE 415, UV 105 Stromversorgung Netzteil, ROD 700 & 850 | barnabas-gonda.de'
     });
 
      const script = this.renderer.createElement('script');
